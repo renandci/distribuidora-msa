@@ -1,0 +1,65 @@
+
+.generate-menus-colors(@i: length(@icon-colors)) when (@i > 0) {
+    .generate-menus-colors((@i - 1));
+
+    .divisao-detalhes {
+        .menus {
+            .menus-topo {
+                .lista-menu-topo {
+                    &:nth-child(@{i}n) {
+                        // color: extract(@icon-colors, @i);
+                        &.add-link-menu-topo {
+                            background-color: lighten(extract(@icon-colors, @i), 21%);
+                            color: extract(@icon-colors, @i) !important;
+                        }
+                        .link-menu-topo {
+                            &.add-link-menu-topo {
+                                background-color: lighten(extract(@icon-colors, @i), 21%);
+                                color: extract(@icon-colors, @i) !important;
+                            }
+                        }
+                        // Sub Menus
+                        .lista-submenus-topo {
+                            // background-color: lighten(extract(@icon-colors, @i), 25%);
+                            border-color: lighten(extract(@icon-colors, @i), 21%);
+                            -webkit-box-shadow: 4px 3px 0 fade(extract(@icon-colors, @i), 21%);
+                            -moz-box-shadow: 4px 3px 0 fade(extract(@icon-colors, @i), 21%);
+                            box-shadow: 4px 3px 0 fade(extract(@icon-colors, @i), 21%);
+                            // color: extract(@icon-colors, @i);
+                            color: #333;
+                            .item-menus {
+                                &:before {
+                                    background-color: extract(@icon-colors, @i);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+.generate-menus-lateral-colors(@i: length(@icon-colors)) when (@i > 0) {
+    .generate-menus-lateral-colors((@i - 1));
+
+    .menus-lateral {
+        li {
+            &:nth-child(@{i}n) {
+                a {
+                    &.link-lateral {
+                        color: extract(@icon-colors, @i) !important;
+                    }
+                }
+                &.produtos-menus {
+                    border-color: extract(@icon-colors, @i) !important;
+                    .menus-lateral-title {
+                        background-color: lighten(extract(@icon-colors, @i), 20%) !important;
+                        color: extract(@icon-colors, @i) !important;
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,368 @@
+
+<!-- saved from url=(0047)https://www.atacadolaurababy.com.br/v1/doc.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>Doc</title>
+		<!-- <link href="./Doc_files/css" rel="stylesheet"> -->
+		<style>
+			html, 
+			body {
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				max-width: 960px;
+				margin-left: auto;
+				margin-right: auto;
+				font-family: 'Open Sans', sans-serif;
+				font-size: 14px;
+			}
+			h2{
+				font-family: 'Open Sans Bold', sans-serif;
+				margin-bottom: 15px;
+			}
+			pre {
+				background-color: #1f1f1f;
+				color: #ddd;
+				font-size: 12px;
+				tab-size: 4;
+			}
+			span {
+				background-color: bisque;
+				display: block;
+			}
+			strong{
+				font-family: 'Open Sans Bold', sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<header></header>	
+		<h2>Listando os Produtos do Sistema</h2>
+		<p>Para ver todos os produtos no sistema, basta acessar <strong>GET</strong> /v1/produtos </p>
+		<pre>	
+			{
+				"pag": 1,
+				"limit": 1,
+				"limit_rows": 1,
+				"pag_first": 1,
+				"pag_last": 1,
+				"produtos": [ {
+						"codigo_id": 1234567890,
+						"nome_produto": "Titulo do produto que irá aparecer na sua loja", 
+						"id_descricao": null,
+						"descricao_nome": "Descrição do nome da descrição",
+						"descricao_produto": "Descrição do seu produto",
+						"id_marcas": null, 
+						"marcas": "Laura Baby",
+						"variations": [
+							{
+								"id": 1234567890,
+								"codigo_produto": "PBTM002",
+								"codigo_referencia": "",
+								"estoque": 1000,
+								"preco_custo": "0.00",
+								"preco_venda": "0.00",
+								"preco_promo": "90.31",
+								"id_cor": 0,
+								"nomecor": "",
+								"id_tamanho": 0,
+								"nometamanho": "",
+								"excluir": 0
+							},
+						]
+					}
+				]
+			}
+		</pre>
+		<p><strong>NOTA: </strong> Para buscar um produto específico, descrição ou pelo código, basta enviar uma requisição <strong>GET</strong> /v1/produtos <code>{ "q": "minha busca" }</code>, também seguindo a mesma lógica, para alternar as páginas <code>{ "q": "minha busca", "pag": 3 }</code></p>
+		<hr>
+		
+		<h2>Cadastrando um produto sem variação</h2>
+		<p>Para cadastrar um produto sem variação, envie um <strong>POST</strong> /v1/produtos, seguindo a lógica abaixo.</p>
+		<pre>
+			{
+				"codigo_referencia": "PR02566",
+				"codigo_produto": "PR02566",
+				"nome_produto": "Produtos sem variations - Teste",
+				"subnome_produto": "Produtos sem variations - Teste",
+				"postagem": "5 a 15 dias após pagamento",
+				"unid": "campos fiscais",
+				"csosn": "campos fiscais",
+				"cfop": "campos fiscais",
+				"cst": "campos fiscais",
+				"ncm": "campos fiscais",
+				"cest": "campos fiscais",
+				"preco_custo": "0.00",
+				"preco_venda": "0.00",
+				"preco_promo": "10.00",
+				"estoque": 5
+			}
+		</pre>
+
+		<h2>Alterando um produto sem variação</h2>
+		<p>Para alterar o produto sem variação, envie um <strong>PUT</strong> /v1/produtos, seguindo a lógica abaixo.</p>
+		<pre>
+			{
+				"id": 2566,
+				"codigo_referencia": "PR02566",
+				"codigo_produto": "PR02566",
+				"nome_produto": "Produtos sem variations - Teste",
+				"subnome_produto": "Produtos sem variations - Teste",
+				"postagem": "5 a 15 dias após pagamento",
+				"unid": "campos fiscais",
+				"csosn": "campos fiscais",
+				"cfop": "campos fiscais",
+				"cst": "campos fiscais",
+				"ncm": "campos fiscais",
+				"cest": "campos fiscais",
+				"preco_custo": "0.00",
+				"preco_venda": "0.00",
+				"preco_promo": "10.00",
+				"estoque": 5
+			}
+		</pre>
+
+		<h2>Cadastrando um produto com variação</h2>
+		<p>Para cadastrar um produto com variação, envie um <strong>POST</strong> /v1/produtos, seguindo a lógica abaixo.</p>
+		<pre>
+			{
+				"codigo_referencia": "PR02566",
+				"codigo_produto": "PR02566",
+				"nome_produto": "Produtos sem variations - Teste",
+				"subnome_produto": "Produtos sem variations - Teste",
+				"postagem": "5 a 15 dias após pagamento",
+				"unid": "campos fiscais",
+				"csosn": "campos fiscais",
+				"cfop": "campos fiscais",
+				"cst": "campos fiscais",
+				"ncm": "campos fiscais",
+				"cest": "campos fiscais",
+				"variations": [
+					{
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 5
+					}, 
+					{
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 1
+					},
+					{
+						"codigo_produto": "PR02566",
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 3
+					}
+				]
+			}
+		</pre>
+
+		<h2>Alterando um produto com variação</h2>
+		<p>Para alterar o produto com variação, envie um <strong>PUT</strong> /v1/produtos, seguindo a lógica abaixo.</p>
+		<pre>
+			{
+				"id": 2566,
+				"codigo_referencia": "PR02566",
+				"codigo_produto": "PR02566",
+				"nome_produto": "Produtos sem variations - Teste",
+				"subnome_produto": "Produtos sem variations - Teste",
+				"postagem": "5 a 15 dias após pagamento",
+				"unid": "campos fiscais",
+				"csosn": "campos fiscais",
+				"cfop": "campos fiscais",
+				"cst": "campos fiscais",
+				"ncm": "campos fiscais",
+				"cest": "campos fiscais",
+				"variations": [
+					{
+						"id": 2627,
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 5
+					}, 
+					{
+						"id": 2628,
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 1
+					},
+					{
+						"id": 2629,
+						"codigo_produto": "PR02566",
+						"preco_custo": "0.00",
+						"preco_venda": "0.00",
+						"preco_promo": "10.00",
+						"estoque": 3
+					}
+				]
+			}
+		</pre>
+
+		<h2>Alterando estoques</h2>
+		<p>Para alterar o produto com variação, envie um <strong>PUT</strong> /v1/produtos, seguindo a lógica abaixo.</p>
+		<p>O exemplo abaixo também pode ser usado para alterar preços, código de produtos, código de referência e postagem.</p>
+		<pre>
+			{
+				"variations": [
+					{
+						"id": 2627,
+						"estoque": 5
+					}, 
+					{
+						"id": 2628,
+						"estoque": 1
+						"preco_promo": "11.59"
+					},
+					{
+						"id": 2629,
+						"estoque": 3,
+						"codigo_referencia": "AA",
+						"codigo_produto": "AA"
+					}
+				]
+			}
+		</pre>
+
+		
+		<h2>Excluindo um produto com variação</h2>
+		<p>
+			Para excluir um produto com sua variação, ou o grupo envie um <strong>DELETE</strong> /v1/produtos, <code>{ "id": 5567 }</code> específico ou <code>{"codigo_id": 1234567890}</code> para o grupo seguindo a lógica abaixo.<br>
+			<strong>NOTA: </strong> Para aterar os dados, os id. id_* devem estar preenchidos.
+		</p>
+		<pre>{"codigo_id": 1234567890}</pre>
+		<pre>{"id": 5567}</pre>
+		<p>return </p><pre>{ "msg": "success" }</pre><p></p>
+		
+		<hr>
+		<h2>Clientes e variações dos endereços</h2>
+		<p>
+			Envie um <strong>GET</strong> /v1/clientes, você verá uma listagem de todos os clientes cadastrados no site.<br>
+			<strong>NOTA: </strong> se quiser fazer uma busca simples de algum cliente, basta enviar um json ex: <code>{ "cli_nome": "nome do cliente" } ou { "cli_email": "e-mail do cliente" }</code> 
+		</p>
+		return
+		<pre>			{
+				"pag": 1,
+				"limit": 50,
+				"limit_rows": 628,
+				"pag_first": 1,
+				"pag_last": 13,
+				"clientes": [
+					{
+						"id": 38,
+						"cli_nome": "nome do cliente",
+						"cli_email": "email@email.com.br",
+						"cli_tel": "(11) 1111-111",
+						"cli_cel": "",
+						"cli_cpfcnpj": "00.000.000/0000-00",
+						"cli_rgie": "000000000000",
+						"enderecos": [
+							{
+								"end_id": 40,
+								"end_cep": "13215-276",
+								"end_endereco": "Avenida Antônio Frederico Ozanan",
+								"end_nr": "6000",
+								"end_bairro": "Vila Rio Branco",
+								"end_complemento": "1218 PISO TÉRREO",
+								"end_referencia": "",
+								"end_cidade": "Jundiai",
+								"end_uf": "SP"
+							}
+						]
+					}....
+		</pre>
+		
+		<hr>
+		<h2>Pedidos, clientes, endereços, produtos...</h2>
+		<p>
+			Envie um <strong>GET</strong> /v1/pedidos, você verá uma listagem de todos os pedidos já realizado em nosso site.<br>
+			<strong>NOTA: </strong> se quiser fazer uma busca simples de algum pedido, basta enviar um json ex: <br><br>
+			</p><pre>				{ 
+					"codigo_venda": "código da venda", 
+					"cli_nome": "nome do cliente", 
+					"status": "status do pedido", (lista no final)
+					"date_ini": "data inicial", 
+					"date_fin": "data final"
+				} 
+			</pre>
+			<br><br><br>
+		<p></p>
+		return 
+		<pre>			{ 
+				"pag": 1,
+				"limit": 50,
+				"limit_rows": 4623,
+				"pag_first": 1,
+				"pag_last": 93,
+				"pedidos": [ 
+					{ 
+						"pedido_id": 4721,
+						"data_venda": "03/09/2019 09:09", 
+						"codigo_venda": "0000000004721", 
+						"frete_tipo": "PAGO", 
+						"frete_valor": 0,
+						"valor_compra": 1137.35,
+						"desconto_cupom": 0,
+						"desconto_boleto": 0,
+						"pgto_tipo": 0,
+						"pgto_forma": "Pagar Me", 
+						"pgto_cartao": "visa", 
+						"pgto_parcela": 0,
+						"status": "Pagamento não aprovado", 
+						"cliente": { 
+							"cli_id": 1,
+							"cli_nome": "Renan Dci Suporte", 
+							"cli_email": "renan@dcisuporte.com.br", 
+							"cli_tel": "(16) 3262-1365", 
+							"cli_cel": "(16) 99753-4219", 
+							"cli_cpfcnpj": "67.320.226/0001-40", 
+							"cli_rgie": "002.621.206-40"
+						}, 
+						"endereco": { 
+							"end_id": 4720,
+							"cli_cep": "14900-000", 
+							"end_endereco": "Sampa", 
+							"end_nr": "1234", 
+							"end_bairro": "Sampa", 
+							"end_complemento": "", 
+							"end_referencia": "", 
+							"end_cidade": "Itápolis", 
+							"end_uf": "SP"
+						}, 
+						"produtos": [ 
+							{ 
+								"id": 3940,
+								"image": "http://store.atacadolaurababy.com.br/imagens-produtos/smalls/15646890095d4342711fe52-1564689009.jpg", 
+								"descricao": "Kit Berço Glamour 10 peças - kit teste (não está a venda)", 
+								"price": 227.47,
+								"unit": 5 
+							} 
+						] 
+					},.... 
+		</pre>
+		<p>
+			Vale lembrar, que voçe não precisa passar todos esses parametros para fazer uma pesquisa nos pedidos, somente se for fazer a busca por data de compra.<br>
+			Segue os status para pesquisa.
+			<br>
+			<br>
+			<code style="font-size: 12px;"> 
+				&nbsp;&nbsp;PEDIDO EXCLUIDO<br>
+				&nbsp;&nbsp;PEDIDO REALIZADO<br>
+				&nbsp;&nbsp;AGUARDANDO PAGAMENTO<br>
+				&nbsp;&nbsp;PAGAMENTO APROVADO<br>
+				&nbsp;&nbsp;PAGAMENTO NÃO APROVADO<br>
+				&nbsp;&nbsp;PAGAMENTO NÃO EFETUADO<br>
+				&nbsp;&nbsp;PEDIDO EM PRODUÇÃO<br>
+				&nbsp;&nbsp;PEDIDO EM SEPARAÇÃO DE ESTOQUE<br>
+				&nbsp;&nbsp;PEDIDO EM TRANSPORTE<br>
+				&nbsp;&nbsp;PEDIDO ENTREGUE<br>
+				&nbsp;&nbsp;PEDIDO CANCELADO<br>
+			</code>
+		</p
+	
+</body>
+</html>

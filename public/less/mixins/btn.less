@@ -1,0 +1,114 @@
+/**
+ * @author Renan Henrique <renan@dcisuporte.com.br>
+ * @company Data Control Infomatica
+ */
+.btn {
+	border: 0;
+	display:inline-block;
+	cursor: pointer;
+	text-align: center;
+	/*font-family: 'Titillium Web', sans-serif;*/
+	font-family: @font-family;
+	font-weight: 500;
+	padding: 10px;
+	font-size: 15px;
+	text-transform: uppercase;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+    color: #fff;
+    &:hover {
+        text-decoration:none
+    }
+    &.disabled{
+        text-decoration:line-through;
+        -moz-opacity:.5;
+        -khtml-opacity:.5;
+        -webkit-opacity:.5;
+        opacity:.5;
+        -ms-filter:alpha(opacity=50);
+        filter:alpha(opacity=50);
+        &:hover {
+            cursor:default
+        }
+    }
+    
+    &-primary {
+        background-color: darken(#fff5f0, 12%);
+        color:#fff!important;
+        &:hover {
+            background-color: darken(#fff5f0, 17%);
+        }
+        &.disabled{
+            &:hover {
+                background-color: darken(#fff5f0, 9%);
+            }
+        }
+    }
+    
+    &-aviseme {
+        background-color: mix(#000, #fff, 30%);
+        color:#fff!important;
+        &:hover {
+            background-color: mix(#000, #fff, 50%);
+        }
+        &.disabled{
+            &:hover {
+               background-color: mix(#000, #fff, 50%);
+            }
+        }
+    }
+    
+    &-secundary {
+        text-shadow: none;
+        background-color: mix(#000, #fff, 30%);
+        color: #fff;
+        &:hover {
+            background-color: mix(#000, #fff, 50%);
+        }
+    }
+	
+    &-blue {
+        background-color: #927168;
+        color:#fff!important;
+        &:hover {
+            background-color: #7b5c53
+        }
+    }
+    &-orange {
+        background-color: #699e73;
+        color:#fff!important;
+        &:hover {
+            background-color: #699e73;
+        }
+    }
+    &-block {
+        display:block;
+        width:100%;
+        padding-left:0;
+        padding-right:0
+    }
+    &-promocode {
+        margin: 0 0 0 5px;
+        padding: 5px 10px;
+    }
+    &-add-address {
+        margin: 7px 0 0;
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+	
+	&-large {
+        padding:10px 15px;
+        font-size:20px
+    }
+    &-medium {
+        padding:10px;
+        font-size:15px
+    }
+    &-small {
+        padding:5px 10px;
+        font-size:11px
+    }
+	
+}

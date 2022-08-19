@@ -1,0 +1,61 @@
+/*!
+ * @author Renan Henrique <renan@dcisuporte.com.br>
+ * @return Script AviseMe
+ */
+.modal-aviseme > div {
+  padding: 15px;
+  background-color: transparent;
+}
+.modal-aviseme > div > label.error-aviseme {
+  display: block;
+  margin-top: -15px;
+  margin-bottom: 15px;
+  color: #f5b0ab;
+}
+.modal-aviseme > div img {
+  border: 1px solid #eee;
+}
+.modal-aviseme > div > input[type="hidden"] {
+  display: none;
+}
+.modal-aviseme > div > input[type="text"],
+.modal-aviseme > div > input[type="tel"],
+.modal-aviseme > div > input[type="email"],
+.modal-aviseme > div > textarea {
+  width: 100%;
+  height: 45px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 2px solid #dedede;
+}
+.modal-aviseme > div > input[type="text"].error-aviseme,
+.modal-aviseme > div > input[type="tel"].error-aviseme,
+.modal-aviseme > div > input[type="email"].error-aviseme,
+.modal-aviseme > div > textarea.error-aviseme {
+  border-bottom-color: #f5b0ab;
+}
+.modal-aviseme > div > input[type="text"].valid-aviseme,
+.modal-aviseme > div > input[type="tel"].valid-aviseme,
+.modal-aviseme > div > input[type="email"].valid-aviseme,
+.modal-aviseme > div > textarea.valid-aviseme {
+  border-bottom-color: #dedede;
+}
+.modal-aviseme > div > button img {
+  border: none;
+}
+@media (max-width: 768px) {
+  .modal-aviseme > div {
+    background-color: #fff;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+}

@@ -1,0 +1,1049 @@
+@CorBaseCheckout: #777;
+/**
+ * NOVO CHECKOUT
+ */
+.new-checkout {
+	color: @CorBaseCheckout;
+	
+	.input-radio, 
+	.input-checkbox{
+		width: 1px;
+		height: 1px;
+		border: none;
+		background-color: transparent;
+		color: transparent;
+		text-indent: -99999px;
+		filter: alpha(opacity=0);
+		opacity: 0;
+	}
+	
+	.input-checkbox{
+		+ label {
+			font-weight: 100;
+			cursor: pointer;
+			display: inline-block;
+			width: 16px;
+			margin-right: 5px;
+			*display: inline;
+			*zoom: 1;
+			&:before{
+				content: '\f096';
+			}
+			&:hover{
+				&:before{
+					content: '\f14a';
+				}
+			}
+		}
+		
+		&:checked{
+			+ label{
+				&:before{
+					content: '\f14a';
+				}
+			}
+		}
+	}
+	
+	.input-radio {
+		+ label {
+			font-weight: 100;
+			cursor: pointer;
+			display: inline-block;
+			width: 16px;
+			margin-right: 5px;
+			*display: inline;
+			*zoom: 1;
+			&:before{
+				content: '\f1db';
+			}
+			&:hover{
+				&:before{
+					content: '\f058';
+				}
+			}
+		}
+		
+		&:checked{
+			+ label{
+				&:before{
+					content: '\f058';
+				}
+			}
+		}
+	}
+	
+	.input-falsos {
+		float: left;
+		width: 100%;
+		height: 36px;
+		border-style: solid;
+		border-width: 1px 1px 3px 1px;
+		border-color: @CorBaseCheckout;
+		position: relative;
+		display: table;
+		border-collapse: separate;
+		border-radius: 5px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		&.border-in{
+			color: darken(@CorBaseCheckout, 22%);
+			border-bottom-color: darken(@CorBaseCheckout, 22%);
+			> input {
+				&::-webkit-input-placeholder {
+					color: darken(@CorBaseCheckout, 22%);
+				}
+			}
+		}
+		
+		> i {
+			width: 1%;
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			display: table-cell;
+			white-space: nowrap;
+			vertical-align: middle;
+			padding: 0 7.5px;
+		}
+        
+		> input,
+		> select{
+			color: @CorBaseCheckout;
+			&::-webkit-input-placeholder {
+				color: @CorBaseCheckout;
+			}
+			height: 36px;
+			border: none;
+			border-radius: 0;
+			-moz-border-radius: 0;
+			-webkit-border-radius: 0;
+			width: 100%;
+			background-color: transparent;
+			display: table-cell;
+			float: left;
+		}
+		> .input-error-span {
+			float: left;
+			width: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			margin: -20px 0 0px 5px;
+		}
+		
+		&.large{
+			height: 48px;
+			> i{
+				height: 48px;
+				line-height: 48px;
+			}
+			input, 
+			select {
+				height: 48px;
+			}
+		}
+	}
+	
+	.new-checkout-error{
+		.input-falsos {
+			color: lighten(red, 27%) !important;
+			border-color: lighten(red, 39%) !important;
+			background-color: lighten(red, 48%) !important;
+			> .btn{
+				background-color: lighten(red, 39%);
+			}
+			> input {
+				color: lighten(red, 27%);
+				&::-webkit-input-placeholder {
+					color: lighten(red, 27%);
+				}
+			}
+		}
+	}
+	
+	.input-error-span-2 {
+		float: left;
+		width: 100%;
+		position: absolute;
+		left: 0;
+		top: 100%;
+		margin: 0 0 0 5px;
+	}
+	
+	.new-caixa-checkout {
+		border-style: solid;
+		border-color: @CorBaseCheckout;
+		border-width: 1px 1px 3px 1px;
+		border-radius: 3px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		padding: 15px;		
+        .badge {
+            border-color: @CorBaseCheckout;
+            color: @CorBaseCheckout;
+        }
+        /**
+         * Destaque para o usuario ver aonde está
+         */
+        &.new-caixa-checkout-active {
+            outline: 5px auto darken(@CorBaseCheckout, 22%);
+            outline-offset: -2px;
+            border-color: darken(@CorBaseCheckout, 22%);
+            color: darken(@CorBaseCheckout, 23%);
+
+            .input-falsos{
+                border-color: darken(@CorBaseCheckout, 22%);
+                > input,
+                > select{
+                    color: darken(@CorBaseCheckout, 22%);
+                    &::-webkit-input-placeholder {
+                        color: darken(@CorBaseCheckout, 22%);
+                    }
+                }
+            }
+        }
+	}
+}
+ 
+/**
+ * END NOVO CHECKOUT
+ */ 
+
+.identificacao-topo-mobile{
+	.logo-site{
+		@media(max-width: 768px){
+			float: none !important;
+			display: block;
+			margin: 0 auto;
+		}
+	}
+	.mobile-text-center{
+		@media(max-width: 768px){
+			text-align: center !important;
+		}
+	}
+}
+
+.bg-custurado-top,
+.bg-custurado-bottom{ 
+	height: 1px;
+}
+
+
+/**
+ * Carrinho de compras
+ */
+.carrinho-title {
+	border: solid 1px #eaeaea;
+	border-radius: 5px 5px 0 0;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	li{ 
+		background-color: #f3f3f3;
+		span{
+			padding: 10px;
+			display: block;
+			font-size: 18px;
+		}
+	}
+}
+.carrinho-itens{
+	
+}
+.bg-f3f3f3{
+	background-color: #f3f3f3;
+}
+ 
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	CADASTRO | LOGIN | CADASTRO DE ENDERECO 
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+.info-identinficacao{
+	font-size: 1.5em;
+	width: auto;
+}
+.info-identinficacao div{
+	width: 230px;
+}
+.fundo-f5f5f5{
+	background-color: #f5f5f5;
+	width: 100%;
+	display: block;
+	padding: 20px 0 60px;
+}
+.form-cadastro, 
+.form-login{
+	width: 40%;
+	position: relative;
+	background-color: #fff;
+}
+.form-login{
+	margin: 0 4.8%;
+}
+.form-centro{
+	padding: 3em;
+	@media(max-width:768px){
+		padding: 0 3em;
+	}
+}	
+.form-cadastro h3, 
+.form-login h3{
+	line-height: 34px;
+}
+.span-input-falsos{
+	position: relative;
+	background-color: #fff;
+	height: 45px;
+}
+.span-input-falsos input{
+	position: absolute;
+	background: transparent;
+	width: 100%;
+	padding: 0;
+	padding-left: 32px;
+	height: 45px;
+	font-weight: 300;
+	color: #999 !important;
+	top: 0;
+	left: 0;
+	right: 0;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	z-index: 5;
+}
+.span-input-falsos i{
+	width: 32px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 20px;
+	display: block;
+	z-index: 2;
+}
+.btn-cadastrar{
+	background-color: #005b9d;
+	color: #fff;
+	border-color: #004183;
+	border-style: solid;
+	border-width: 1px 1px 3px 1px;
+	width: 100%;
+}
+label.error{
+	position: absolute;
+	top: -20px;
+	right: 0px;
+	color: #ff5b5b;
+	height: 15px;
+	line-height: 15px;
+	width: 300px;
+	text-align: right;
+	z-index: 4;
+}
+input.error{
+	border-color: #ff5b5b;
+}
+.span-input-falsos-error{
+	border-color: #ff5b5b;
+}
+/* div.clearfix{ */
+	/* position: relative; */
+/* } */
+.form-cadastro-cliente{
+	padding: 0;
+    .new-checkout-error {
+        color: lighten(red, 27%);
+        border-color: lighten(red, 39%);
+        background-color: lighten(red, 48%);
+        input {
+            color: lighten(red, 27%);
+            border-color: lighten(red, 39%);
+            &::-webkit-input-placeholder {
+                color: lighten(red, 27%);
+            }
+        }
+        span{
+            &.input-error-span-2{
+                display: block;
+            }
+        }
+    }
+}
+.div-centro-form-cadastro-cliente{
+    > div{
+        padding: 10px 0;
+    }
+	/*width: 80%;*/
+	@media(max-width: 768px){
+		width: 100%;
+	}
+}
+.input-cadastro-cliente{
+	height: 45px;
+	font-weight: 300;
+	color: #999 !important;
+	padding: 0 10px;
+	width: auto;
+	@media(max-width: 768px){
+		width: 100%;
+	}
+}
+.tag-span-input{
+	width: 245px;
+	height: 45px;
+	line-height: 45px;
+	text-align: right;
+	padding-right: 15px;
+	@media(max-width: 768px){
+		width: 100%;
+		+ .tag-left{
+			width: 100%;
+			+ font{
+				text-indent: 0px !important;
+			}
+		}
+	}
+}
+input[type=radio],
+input[type=checkbox] {
+	width: 1px;
+    height: 1px;
+    border: none;
+    background-color: transparent;
+    color: transparent;
+    text-indent: -99999px;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    
+    + label.input-checkbox{
+        width: 22px;
+        height: 50px;
+        background-image: url('/public/imgs/radios-site.png');
+        background-repeat: no-repeat;
+        display: inline-block;
+        background-position: -1px 13px;
+        vertical-align: top; 
+    }
+    + label.input-checkbox:hover {
+        background-position: -23px 13px;
+    }
+    &:checked + label.input-checkbox{
+        background-position: -45px 13px;
+    }
+}
+
+input[type=radio][name=endereco] + label.input-endereco{
+	width: 20px;
+	height: 18px;
+	background-image: url('/public/imgs/checkbox-site.png');
+	background-repeat: no-repeat;
+	background-position: -2px -2px;
+	display: inline-block;
+	vertical-align: top; 
+}
+input[type=radio][name=endereco] + label.input-endereco:hover {
+  background-position: -24px -2px;
+  cursor: pointer;
+}
+input[type=radio][name=endereco]:checked + label.input-endereco{
+  background-position: -50px -2px;
+  cursor: pointer;
+}
+.btn-cadastro-cliente{
+	background-color: #85b200;
+}
+label.error-cadastro{
+	color: #ff5b5b;
+	float: right;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 5px;
+}
+label.error-cadastro-endereco{
+	color: #ff5b5b;
+	position: absolute;
+	padding: 0 5px;
+	right: 0;
+	top: 22px;
+	margin: 0;
+}
+input.error-cadastro{
+	border-color: #ff5b5b;
+}
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	CARRINHO DE COMPRAS
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+.table-carrinho{
+	background-color: #fff;
+	padding: .7em;
+	width: auto;
+}
+.table-carrinho-titulos{
+	background-color: #eee;
+}
+.tag-small{
+	font-size: 13px;
+}
+.cell-carrinho{
+	height: 93px;
+	width: 800px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.input-carrinho{
+	width: 32px;
+	height: 32px;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	border: none;
+	background-color: #fff;
+}
+.campo-quantidade-carrinho{
+	width: 98px;
+	height: 32px;
+	overflow: hidden;
+	background-color: #eee;
+	display: block;
+	margin: 0 auto;
+	border:solid 1px #f1f1f1;
+}
+.campo-quantidade-carrinho span, .campo-quantidade-carrinho a{
+	width: 32px;
+	height: 32px;
+	display: block;
+	float: left;
+}	
+.campo-quantidade-carrinho .span{
+	line-height: 26px;
+	font-weight: bold;
+	font-size: 32px;
+	cursor: pointer;
+}
+.border-top-carrinho{
+	border-top:dotted 1px #ccc;
+}
+.carrinho-total{
+	background-color: #eee;
+	padding: .9em;
+}
+.carrinho-cupom{
+	width: 50%;
+}
+.carrinho-subtotal, .carrinho-cep{
+	width: 30%;
+	border-bottom:dotted 1px #ccc;
+	padding: 1em 0;
+	font-size: 1.3em;
+}
+.carrinho-desconto{
+	width: 30%;
+	font-size: 1.3em;
+}
+.carrinho-total-geral{
+	width: 30%;
+	padding: .2em 0;
+	font-size: 1.8em;
+}
+#cupom-desconto {
+    > span {
+        input {
+            width: 55%;
+            @media(max-width: 768px) {
+                width: 100%;
+            }
+        }
+        button{
+            @media(max-width: 768px) {
+                width: 100%;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+/* .cx-frete-carrinho{
+	font-family: 'BebasNeue',sans-serif;
+	width: 420px;
+	height: 255px;
+	top: 50%;
+	left: 50%;
+	margin: -127.5px 0 0 -210px;
+	background-color: #fff;
+	-webkit-box-shadow: 4px 3px 0 rgba(50,50,50,.4);
+	-moz-box-shadow: 4px 3px 0 rgba(50,50,50,.4);
+	box-shadow: 4px 3px 0 rgba(50,50,50,.4);
+	position: fixed;
+	z-index:999999;
+	font-size: 13px;
+}
+.cx-frete-carrinho div{
+	padding: 10px;
+}
+.cx-frete-carrinho a{
+	font-size: 22px;
+} */
+/*
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+	FORMAS DE PAGAMENTO
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*/
+.div-001{
+	width:70%;
+}
+.div-002{
+	width: 30%;
+}
+.centro-div-001{
+	width: 98%;
+	background-color: #fff;
+}
+
+.div-hover-endereco{
+	background-color: transparent;
+	border-color: transparent;
+	border-width: 1px;
+	border-style: solid;
+	padding: 8px;
+}
+.div-hover-endereco:hover{
+	background-color: #fcf8e3;
+	border-color: #facbcc;
+	border-width: 1px;
+	border-style: solid;
+}
+.div-hover-endereco-ativo{
+	background-color: #fcf8e3;
+	border-color: #facbcc;
+	border-width: 1px;
+	border-style: solid;
+}
+
+.abas-formas-pagamento{
+	line-height: 45px;
+	background-color: transparent;
+	border-color: transparent;
+	border-width: 1px;
+	border-style: solid;
+	padding: 8px;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+.abas-formas-pagamento-ativa{
+	background-color: #fcf8e3;
+	border-color: #facbcc;
+	border-width: 1px;
+	border-style: solid;
+}
+/**
+ * NÃO EXCLUIR ATE SEGUNDO MOMENTO
+input[type=radio][name=formaspamentos] + label.input-checkbox{
+	width: 20px;
+	height: 42px;
+	background-image: url('/public/imgs/checkbox-site.png');
+	background-repeat: no-repeat;
+	background-position: -2px 12px;
+	display: inline-block;
+	vertical-align: top; 
+	cursor: pointer;
+}
+input[type=radio][name=formaspamentos] + label.input-checkbox:hover {
+  background-position:	-24px 12px;
+}
+input[type=radio][name=formaspamentos]:checked + label.input-checkbox{
+  background-position:-50px 12px;
+}
+
+input[type=radio][name=icon_cartoes] + label.input-checkbox{
+	width: 45px;
+	height: 29px;
+	background-image: url('/public/imgs/sprite.png');
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: top; 
+	cursor: pointer;
+	margin: 16px 0 0 0;
+}
+input[type=radio][name=icon_cartoes] + label.visa{background-position:-50px -348px;}
+input[type=radio][name=icon_cartoes] + label.visa:hover {background-position:0px -348px;}
+input[type=radio][name=icon_cartoes]:checked + label.visa{background-position:0px -348px;}
+
+input[type=radio][name=icon_cartoes] + label.mastercard{background-position:-50px -381px;}
+input[type=radio][name=icon_cartoes] + label.mastercard:hover {background-position:0px -381px;}
+input[type=radio][name=icon_cartoes]:checked + label.mastercard{background-position:0px -381px;}
+
+input[type=radio][name=icon_cartoes] + label.amex{background-position:-50px -416px;}
+input[type=radio][name=icon_cartoes] + label.amex:hover {background-position:0px -416px;}
+input[type=radio][name=icon_cartoes]:checked + label.amex{background-position:0px -416px;}
+
+input[type=radio][name=icon_cartoes] + label.elo{background-position:-50px -450px;}
+input[type=radio][name=icon_cartoes] + label.elo:hover {background-position:0px -450px;}
+input[type=radio][name=icon_cartoes]:checked + label.elo{background-position:0px -450px;}
+
+input[type=radio][name=icon_cartoes] + label.diners{background-position:-50px -484px;}
+input[type=radio][name=icon_cartoes] + label.diners:hover {background-position:0px -484px;}
+input[type=radio][name=icon_cartoes]:checked + label.diners{background-position:0px -484px;}
+*/
+/* input, textarea { */
+	/* padding: 10px; */
+	/* border: 1px solid #ccc; */
+	/* font-size: 16px; */
+	/* font: 15px 'titillium web',helvetica,arial,sans-serif; */
+	/* font-weight: 400; */
+	/* color: #666; */
+	/* border-bottom: 3px solid #ccc; */
+	/* -webkit-border-radius: 3px; */
+	/* -moz-border-radius: 3px; */
+	/* border-radius: 3px; */
+	/* width: 250px; */
+/* } */
+
+.controls, .form-address-modal .controls {
+	margin: 15px 0 0;
+	padding: 0 0 5px;
+	position: relative;
+}
+/*.input-large {
+	width: 350px;
+}*/
+/*.bandeiras-cartoes li{
+	float: left;
+	margin: 0 2px 2px 0;
+	width: 75px;
+	height: 65px;
+	text-align: center;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	border: solid 1px #ddd;
+	position: relative;
+}
+.icons-bandeiras{
+	background-color:#fff;
+	background-image: url('/public/imgs/sprite.png');
+	background-repeat:  no-repeat;
+	width: 45px;
+	height: 29px;
+	display: block;
+	margin: 0 auto;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	display:none;
+}
+.visa{background-position:0 -348px;}
+.mastercard{background-position:0 -381px;}
+.amex{background-position:0 -416px;}
+.elo{background-position:0 -450px;}
+.diners{background-position:0 -484px;}
+.security-number {
+	width: 150px;
+	height: 30px;
+	margin: 7px 0 0 10px;
+	padding: 5px 0 0 50px;
+	font-size: 11px;
+	background: url(/public/imgs/sprite.png) no-repeat 0 -269px;
+}*/
+
+.select-skin {
+	width: 240px;
+	position: relative;
+	display: inline-block;
+}
+
+.select-skin select {
+	width: 100%;
+	height: 100%;
+	float: none;
+	display: block;
+	padding: 8px 5px;
+	border-color: #ccc;
+	border-width: 1px 1px 3px 1px;
+	border-style: solid;
+	font-size: 16px;
+	-webkit-appearance: menulist-button;
+	height: 45px;
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	background: url('/public/imgs/arrow.png') no-repeat right #fff;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+}
+.month {
+	width: 70px;
+}
+.year {
+	width: 90px;
+	margin: 0 5px 0 0;
+}
+.select-skin-mask {
+	width: 100%;
+	display:none;
+}
+.select-skin-text-clip {
+	padding: 8px 5px;
+	overflow: hidden;
+	background: #fff;
+	border: 1px solid #ccc;
+	font-size: 16px;
+	background-color: #fff;
+	display:none;
+}
+.select-skin-text-clip:before {
+	font: normal normal normal 14px/1 FontAwesome;
+	display: inline-block;
+	float: right;
+	margin: 2px 10px 0 0;
+	content: "\f0d7";
+	font-size: 16px;
+	display:none;
+}
+.error-minha-compra{border-color: #ff5b5b !important;}
+.error-minha-compra  + .bandeiras-cartoes{border-color: #ff5b5b !important;}
+label.error-minha-compra{display: none !important;}
+
+/*hr {
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #eee;
+}*/
+
+.menu-cliente{
+	background-color: #fff;
+    a {
+        padding: 5px;
+        margin: 2px 0;
+        font-weight: 500;
+        &:hover{
+            background-color: #eee;
+        }
+    }
+}
+
+.add-active-menu{ 
+    background-color: #eee; 
+}
+.lista-pedidos{
+	background-color: #fff;
+	padding: 15px;
+}
+
+/*.paginacao-site{
+	width: 100%;
+	text-align: center;
+	padding-top: 11px;
+	font-size: 15px;
+}
+.paginacao-site span{
+	background-color: orange;
+	width: 25px;
+	height: 25px;
+	line-height: 25px;
+	color: #fff;
+	font-weight: 700;
+	margin: 0 1px;
+}
+.paginacao-site a, .paginacao-site span{
+	display: inline-block;
+	margin: 0 2px;
+	padding: 0 2px;
+}*/
+.lista-pedidos .btn-primary{
+	padding: 2px 5px;
+	font-size: 13px;
+	font-weight: 500;
+}
+.class-border-top{
+	border-top: dotted 1px #ccc;
+}
+.column {
+	color: #1c4880;
+	/*font-family: 'Titillium Web';*/
+	font-weight: 700;
+}
+.form-senha{
+	position: absolute;
+	background-color: #fff;
+	width: 320px;
+	height: 275px;
+	top: 50%;
+	left: 50%;
+	margin: -137.5px 0 0 -160px;
+	z-index: 99999;
+	display: none;
+}
+.form-senha .fa-close{
+	position:absolute;
+	z-index: 10;
+	right:5px;
+	top: 5px;
+	font-size: 22px;
+}
+.form-senha .form-centro{
+	padding: 25px;
+}
+
+/*------------	CLASS DO FRETE MINHA COMPRA	---------------*/
+
+label.imagens-frete{
+	width: 74px;
+	height: 25px;
+	background-image: url('/public/imgs/imagem-frete-2.png');
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: top; 
+}
+label.frete-sedex{
+	background-position: 0 0;
+}
+label.frete-pac{
+	background-position: -75px 0;
+}
+label.frete-jadlog{
+	background-position: -75px -51px;
+}
+
+input[type=radio][name=frete]{
+	display: none;
+}
+
+input[type=radio][name=frete] + label.input-frete{
+	width: 20px;
+	height: 18px;
+	background-image: url('/public/imgs/checkbox-site.png');
+	background-repeat: no-repeat;
+	background-position: -2px -2px;
+	display: inline-block;
+	vertical-align: top; 
+	cursor: pointer;
+}
+
+input[type=radio][name=frete] + label.input-frete-sedex:hover {
+	background-position: -24px -2px;
+}
+input[type=radio][name=frete]:checked + label.input-frete-sedex{
+	background-position: -50px -2px;
+}
+
+input[type=radio][name=frete] + label.input-frete-pac:hover {
+	background-position: -24px -2px;
+}				
+input[type=radio][name=frete]:checked + label.input-frete-pac{
+	background-position: -50px -2px;
+}
+input[type=radio][name=frete] + label.input-frete-jadlog:hover {
+	background-position: -24px -2px;
+}				
+input[type=radio][name=frete]:checked + label.input-frete-jadlog{
+	background-position: -50px -2px;
+}
+
+label.input-frete-carrinho{
+	width: 73px;
+	height: 25px;
+	background-image: url('/public/imgs/imagem-frete-2.png');
+	background-repeat: no-repeat;
+	display: inline-block;
+	vertical-align: top; 
+	cursor: pointer;
+}
+label.input-frete-sedex-carrinho{
+	background-position: 0px 0px;
+}
+label.input-frete-pac-carrinho{
+	background-position: -75px 0px;
+}
+label.input-frete-jadlog{
+	background-position: -75px 51px;
+}
+
+/*------------	CLASS DO FRETE MINHA COMPRA	---------------*/
+@media screen and ( max-width: 770px ) {
+	.form-cadastro, 
+	.form-login{
+		width: 100%;
+		margin:0;
+		float: none;
+		margin: 0 auto;
+		position: relative;
+	}
+	.info-identinficacao{
+		float: left;
+	}
+	.centro-div-001{
+		width: 100%;
+	}
+	.div-002,
+	.div-001{
+		width: 100%;
+		padding: 0;
+		float: none;
+	}
+	#sidebar{
+		position: relative!important;
+		width: 100%!important;
+	}
+	.tag-span-input{
+		text-align: left;
+	}
+	.abas-formas-pagamento{
+		width: 100%;
+	}
+	/*--------------------	CARRINHO	----------------------*/
+	.mobile-separa-carrinho{
+		height: 0px;
+		width: 100%;
+	}
+	.mobile-separa-carrinho *{
+		display: none!important;
+		height: 0;
+		font-size: 0;
+	}
+	
+	.mobile-preco-carrinho,
+	.mobile-imagem-produto-carrinho,
+	.mobile-quantidade-produto-carrinho{
+		display: inline-block!important;
+		float: left;
+	}
+	
+	.identificacao-mobile,
+	.mobile-quantidade-produto-carrinho,
+	.carrinho-cupom,
+	.carrinho-desconto,
+	.carrinho-total-geral,
+	.carrinho-cep,
+	.carrinho-subtotal{
+		width: 100%;
+	}
+	.mobile-imagem-produto-carrinho,
+	.mobile-nome-produto-carrinho,
+	.mobile-preco-produto-carrinho,
+	.mobile-quantidade-produto-carrinho{
+		width: 50%;
+		float: left!important;
+	}
+	.identificacao-mobile{
+		font-size: 10px;
+		width: 152px;
+	}
+	.title{
+		font-size: 16px;
+		margin-top: 7px;
+	}
+	/*--------------------	CARRINHO	----------------------*/
+	/*--------------------	FORMULARIO DE ESQUECI MINHA SENHA	----------------------*/
+	.form-senha{
+		width:	100%;
+		height:	100%;
+		top:0;
+		left: 0;
+		margin: 0;
+	}
+	/*--------------------	FORMULARIO DE ESQUECI MINHA SENHA	----------------------*/	
+}
+

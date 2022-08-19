@@ -1,0 +1,67 @@
+/**
+ * @Author renan
+ * @Created 18/03/2016 renan
+ */
+
+
+.border-radius(@i1, @i2, @i3, @i4) {
+	-webkit-border-radius: @i1 @i2 @i3 @i4;
+	-moz-border-radius: @i1 @i2 @i3 @i4;
+	border-radius: @i1 @i2 @i3 @i4;
+}
+
+.border-radius-all(@x) {
+	-webkit-border-radius: @x;
+	-moz-border-radius: @x;
+	border-radius: @x;
+}
+
+.box-shadow( @type, @color ) {
+	-webkit-box-shadow: @type 0 1px 1px rgba(red(@color), green(@color), blue(@color), 0.75), 0 0 8px rgba(red(@color), green(@color), blue(@color), 0.5);
+	box-shadow: @type 0 1px 1px rgba(red(@color), green(@color), blue(@color), 0.75), 0 0 8px rgba(red(@color), green(@color), blue(@color), 0.5);
+}
+
+.rotate-transform(@deg){
+	transform: rotate(@deg);
+	-webkit-transform: rotate(@deg);
+	-moz-transform: rotate(@deg);
+	-o-transform: rotate(@deg);
+	-ms-transform: rotate(@deg);
+}
+ 
+.loopMargins (@index) when (@index >= 0) {
+  .mt@{index} {
+    margin-top: @index * 1px;
+  }
+  .mb@{index} {
+    margin-bottom: @index * 1px;
+  }
+  .mr@{index} {
+    margin-right: @index * 1px;
+  }
+  .ml@{index} {
+    margin-left: @index * 1px;
+  }
+  .loopMargins (@index - 5);
+}
+
+.loopFonte (@index) when (@index >= 0) {
+  .ft@{index}px {
+    font-size: @index * 1px;
+  }
+  .loopFonte (@index - 1);
+}
+
+
+.loopWidthPorcentagem (@index) when (@index >= 0) {
+  .w@{index} {
+    width: percentage((@index / 100));
+  }
+  .loopWidthPorcentagem (@index - 1);
+}
+
+
+// .loopMargins(50);
+// .loopFonte(50);
+// .loopWidthPorcentagem(100);
+

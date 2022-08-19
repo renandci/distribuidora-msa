@@ -1,0 +1,31 @@
+@font-face {
+  font-family: 'Helvetica Normal';
+  src: url('/assets/distribuidoramsa/fonts/Helvetica-Normal.eot');
+  src: url('/assets/distribuidoramsa/fonts/Helvetica-Normal.eot?#iefix') format('embedded-opentype'), url('/assets/distribuidoramsa/fonts/Helvetica-Normal.woff2') format('woff2'), url('/assets/distribuidoramsa/fonts/Helvetica-Normal.woff') format('woff'), url('/assets/distribuidoramsa/fonts/Helvetica-Normal.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Rounded Bold';
+  src: url('/assets/distribuidoramsa/fonts/helveticarounded-bold.eot');
+  src: url('/assets/distribuidoramsa/fonts/helveticarounded-bold.eot?#iefix') format('embedded-opentype'), url('/assets/distribuidoramsa/fonts/helveticarounded-bold.woff2') format('woff2'), url('/assets/distribuidoramsa/fonts/helveticarounded-bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Rounded Bold Cond';
+  src: url('/assets/distribuidoramsa/fonts/helveticarounded-boldcond.eot');
+  src: url('helveticarounded-boldcond.eot?#iefix') format('embedded-opentype'), url('/assets/distribuidoramsa/fonts/helveticarounded-boldcond.woff2') format('woff2'), url('/assets/distribuidoramsa/fonts/helveticarounded-boldcond.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Helvetica Rounded BlackRg';
+  src: url('/assets/distribuidoramsa/fonts/helveticarounded-black.eot');
+  src: url('/assets/distribuidoramsa/fonts/helveticarounded-black.eot?#iefix') format('embedded-opentype'), url('/assets/distribuidoramsa/fonts/helveticarounded-black.woff2') format('woff2'), url('/assets/distribuidoramsa/fonts/helveticarounded-black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+/*.helvetica-rounded{*/
+/*font-family: 'HelveticaRounded-Black', sans-serif;*/
+/*}*/

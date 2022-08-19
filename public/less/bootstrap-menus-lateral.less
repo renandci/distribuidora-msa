@@ -1,0 +1,261 @@
+/**
+ * Deve se Gerar todo o css dos menus lateral dos sites
+ */
+.menus-lateral {
+  li {
+    margin-bottom: 15px;
+    a {
+      margin-left: 15px;
+      &.link-lateral {
+        font-size: 20px;
+        color: darken(#ececec, 9%);
+        margin-left: 0;
+        margin-bottom: 10px;
+      }
+      &:hover {
+        font-weight: bold;
+        text-decoration: underline;
+      }
+    }
+
+    &.produtos-menus {
+      border-width: 1px;
+      border-color: #ececec;
+      border-style: solid;
+      .menus-lateral-title {
+        display: block;
+        padding: 16.5px;
+        background-color: #1f4871;
+        color: #fff;
+        @media (max-width: 768px) {
+          text-transform: uppercase;
+        }
+        > input[type="checkbox"] {
+          + label {
+            &::before {
+              content: "x";
+              float: left;
+              margin-right: 5px;
+              display: none;
+              width: 17px;
+              height: 17px;
+              line-height: 14px;
+              margin-top: 2px;
+              background-color: #b9b9b9;
+              padding: 0;
+              text-align: center;
+              font-size: 15px;
+              color: #fff;
+              -webkit-border-radius: 3px;
+              -moz-border-radius: 3px;
+              border-radius: 3px;
+              text-transform: lowercase;
+            }
+          }
+          &:checked {
+            + label {
+              &::before {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+      .menus-lateral-tab {
+        overflow: auto;
+        height: 305px;
+        padding: 15px;
+        &::-webkit-scrollbar-track {
+          background-color: #f4f4f4;
+        }
+        &::-webkit-scrollbar {
+          width: 7px;
+          background-color: #f4f4f4;
+          cursor: pointer;
+        }
+        &::-webkit-scrollbar-thumb {
+          background-color: #dad7d7;
+        }
+        input[type="checkbox"] {
+          display: none;
+          + label {
+            font-weight: normal;
+            &.cx-tamanhos {
+              float: left;
+              margin: 2px;
+              padding: 0px 7px;
+            }
+            &::before {
+              content: "x";
+              float: left;
+              margin-right: 5px;
+              display: none;
+              width: 17px;
+              height: 17px;
+              line-height: 14px;
+              margin-top: 2px;
+              background-color: #b9b9b9;
+              padding: 0;
+              text-align: center;
+              font-size: 15px;
+              color: #fff;
+              -webkit-border-radius: 3px;
+              -moz-border-radius: 3px;
+              border-radius: 3px;
+              text-transform: lowercase;
+            }
+            &:hover {
+              font-weight: bold;
+              > span {
+                border: solid 2px #888888;
+              }
+            }
+          }
+          &:checked {
+            + label {
+              font-weight: bold;
+              &.cx-tamanhos {
+                background-color: #e0e0d9;
+                border: solid 2px #888888;
+              }
+              > span {
+                border: solid 2px #888888;
+              }
+              &::before {
+                display: block;
+              }
+            }
+          }
+        }
+        > label,
+        > span {
+          display: block;
+          padding: 3.75px 15px 3.75px 0;
+          margin-bottom: 2px;
+          position: relative;
+          cursor: pointer;
+          &:before {
+            content: ".";
+            font-size: 0px;
+          }
+          > span {
+            float: left;
+            width: 22px;
+            height: 22px;
+            display: block;
+            background-color: transparent;
+            margin: 0 5px;
+            position: relative;
+            overflow: hidden;
+            z-index: 0;
+
+            > span {
+              position: absolute;
+              width: 0;
+              height: 0;
+              font-size: 0;
+              overflow: hidden;
+              top: 50%;
+              left: 50%;
+              border-bottom: 200px solid transparent;
+              border-left: 200px solid transparent;
+              margin-left: -100px;
+              margin-top: -100px;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .menus-site {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 10px;
+    background: #fff;
+    margin: 0;
+    display: none;
+    cursor: pointer;
+    @media (max-width: 768px) {
+      display: block;
+      visibility: visible;
+    }
+  }
+
+  &.menus-lateral-mobile {
+    display: block !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    margin: 0;
+    margin-left: -100%;
+    z-index: 9;
+    background-color: #fff;
+    overflow-y: auto;
+    > .menus-site {
+      display: block;
+      @media (max-width: 768px) {
+        display: block;
+        visibility: visible;
+        position: relative;
+        background-color: #eee;
+        margin: 0 -15px;
+        padding: 7.5px 15px;
+      }
+      &:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      > .fa {
+        color: #ccc;
+        border-color: #ccc;
+        border-style: solid;
+        border-width: 1px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+        float: right;
+        width: 32px;
+        height: 32px;
+        line-height: 30px;
+        text-align: center;
+        margin: 0px;
+      }
+    }
+    ul {
+      @media (max-width: 768px) {
+        margin-top: 5px;
+      }
+      li {
+        padding: 0;
+        a {
+          margin-left: 15px;
+          &.link-lateral {
+            margin: 0 0 10px 0;
+            font-size: 20px;
+            color: #fff;
+          }
+          &:hover {
+            font-weight: bold;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #f4f4f4;
+    }
+    &::-webkit-scrollbar {
+      width: 7px;
+      background-color: #f4f4f4;
+      cursor: pointer;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #dad7d7;
+    }
+  }
+}

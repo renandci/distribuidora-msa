@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://jadlogEdiws" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:impl="http://jadlogEdiws" xmlns:intf="http://jadlogEdiws" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<!--WSDL created by Apache Axis version: 1.4
+Built on Apr 22, 2006 (06:55:48 PDT)-->
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://jadlogEdiws" xmlns="http://www.w3.org/2001/XMLSchema">
+   <element name="inserir">
+    <complexType>
+     <sequence>
+      <element name="CodCliente" type="xsd:string"/>
+      <element name="Password" type="xsd:string"/>
+      <element name="Remetente" type="xsd:string"/>
+      <element name="RemetenteCNPJ" type="xsd:string"/>
+      <element name="RemetenteIE" type="xsd:string"/>
+      <element name="RemetenteEndereco" type="xsd:string"/>
+      <element name="RemetenteBairro" type="xsd:string"/>
+      <element name="RemetenteCEP" type="xsd:string"/>
+      <element name="RemetenteTelefone" type="xsd:string"/>
+      <element name="Destino" type="xsd:string"/>
+      <element name="Destinatario" type="xsd:string"/>
+      <element name="DestinatarioCNPJ" type="xsd:string"/>
+      <element name="DestinatarioIE" type="xsd:string"/>
+      <element name="DestinatarioEndereco" type="xsd:string"/>
+      <element name="DestinatarioBairro" type="xsd:string"/>
+      <element name="DestinatarioCEP" type="xsd:string"/>
+      <element name="DestinatarioTelefone" type="xsd:string"/>
+      <element name="ColetaResponsavel" type="xsd:string"/>
+      <element name="Volumes" type="xsd:string"/>
+      <element name="PesoReal" type="xsd:string"/>
+      <element name="Especie" type="xsd:string"/>
+      <element name="Conteudo" type="xsd:string"/>
+      <element name="Nr_Pedido" type="xsd:string"/>
+      <element name="Nr_NF" type="xsd:string"/>
+      <element name="Danfe" type="xsd:string"/>
+      <element name="Serie_Nf" type="xsd:string"/>
+      <element name="ValorDeclarado" type="xsd:string"/>
+      <element name="Observacoes" type="xsd:string"/>
+      <element name="Modalidade" type="xsd:string"/>
+      <element name="wCentroCusto" type="xsd:string"/>
+      <element name="wContaCorrente" type="xsd:string"/>
+      <element name="wTipo" type="xsd:string"/>
+      <element name="CodUnidade" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="inserirResponse">
+    <complexType>
+     <sequence>
+      <element name="inserirReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelar">
+    <complexType>
+     <sequence>
+      <element name="CodCliente" type="xsd:int"/>
+      <element name="Password" type="xsd:string"/>
+      <element name="NrPED" type="xsd:string"/>
+      <element name="Motivo" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+   <element name="cancelarResponse">
+    <complexType>
+     <sequence>
+      <element name="cancelarReturn" type="xsd:string"/>
+     </sequence>
+    </complexType>
+   </element>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="cancelarResponse">
+
+      <wsdl:part element="impl:cancelarResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inserirResponse">
+
+      <wsdl:part element="impl:inserirResponse" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="inserirRequest">
+
+      <wsdl:part element="impl:inserir" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:message name="cancelarRequest">
+
+      <wsdl:part element="impl:cancelar" name="parameters">
+
+      </wsdl:part>
+
+   </wsdl:message>
+
+   <wsdl:portType name="NotfisBean">
+
+      <wsdl:operation name="inserir">
+
+         <wsdl:input message="impl:inserirRequest" name="inserirRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:inserirResponse" name="inserirResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelar">
+
+         <wsdl:input message="impl:cancelarRequest" name="cancelarRequest">
+
+       </wsdl:input>
+
+         <wsdl:output message="impl:cancelarResponse" name="cancelarResponse">
+
+       </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="NotfisBeanSoapBinding" type="impl:NotfisBean">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="inserir">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="inserirRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="inserirResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+      <wsdl:operation name="cancelar">
+
+         <wsdlsoap:operation soapAction=""/>
+
+         <wsdl:input name="cancelarRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="cancelarResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="NotfisBeanService">
+
+      <wsdl:port binding="impl:NotfisBeanSoapBinding" name="NotfisBean">
+
+         <wsdlsoap:address location="http://www.jadlog.com.br:8080/JadlogEdiWs/services/NotfisBean"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>

@@ -1,0 +1,81 @@
+<?php
+
+if( isset($POST['pagamento']['acao']) && ($POST['pagamento']['Frete'] == '' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ) {
+	$string['error'] = 1;
+	$string['mensagem'] = 'Selecione a forma de envio!';
+	exit( json_encode( $string, JSON_UNESCAPED_UNICODE ) );
+}
+
+if( isset($POST['pagamento']['acao']) && ($POST['pagamento']['FormaPagamento'] == '' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ) {
+	$string['error'] = 1;
+	$string['mensagem'] = 'Selecione uma forma de pagamento!';
+    exit( json_encode( $string, JSON_UNESCAPED_UNICODE ) );
+}
+
+/**
+ * Pagamento com cartão via cielo
+ */
+if( isset($POST['pagamento']['acao']) && ($POST['pagamento']['FormaPagamento'] == 'Mp Cartão' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-mp-cartao.php';
+}
+
+/**
+ * Pagamento com cartão via cielo
+ */
+if( isset($POST['pagamento']['acao']) && ($POST['pagamento']['FormaPagamento'] == 'Cartão' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+//    include 'ajax-confirma-compra-cielo-1.5.php';
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-cielo-3.0.php';
+}
+
+/**
+ * Pagamento com ambiente da cielo (sem homologação)
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'Ambiente Cielo' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-cielo.php';
+}
+
+/**
+ * Pagamento Transferencia
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'Transferência' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-transferencia.php';
+}
+
+/**
+ * Pagamento Boleto
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'Boleto' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    if( empty($CONFIG['pagamentos']['mp_boleto']) ){
+		include PATH_ROOT . 'app/includes/ajax-confirma-compra-boleto.php';		
+	} else {
+		include PATH_ROOT . 'app/includes/ajax-confirma-compra-mp-boleto.php';		
+	}
+}
+
+/**
+ * Pagamento PIX
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'Pix' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-pix.php';
+}
+
+/**
+ * Pagamento PicPay
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'PicPay' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-picpay.php';
+}
+
+/**
+ * Pagamento PagSeguro
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'PagSeguro' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-pagseguro.php';
+}
+
+/**
+ * Pagamento Pagar Me
+ */
+if( isset($POST['pagamento']['acao'], $POST['pagamento']['FormaPagamento']) && ($POST['pagamento']['FormaPagamento'] == 'Pagar Me' && $POST['pagamento']['acao'] == 'FinalizarPagamento') ){
+    include PATH_ROOT . 'app/includes/ajax-confirma-compra-pagarme.php';
+}

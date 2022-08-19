@@ -1,0 +1,45 @@
+{
+    "order": {
+        "channel": "ApiClient",
+        "items": [{
+                "id": "1611236340-2560",
+                "qty": 1,
+                "original_price": 10,
+                "special_price": 10
+            }
+        ],
+        "customer": {
+            "name": "Renan Henrique",
+            "email": "renan@dcisuporte.com.br",
+            "date_of_birth": "1986-07-17",
+            "gender": "male",
+            "vat_number": "38536597801",
+            "phones": ["1632621365"]
+        },
+        "billing_address": {
+            "street": "Amaral Lyra",
+            "number": 1155,
+            "detail": "Empresa",
+            "neighborhood": "Centro",
+            "city": "Itápolis",
+            "region": "SP",
+            "country": "BR",
+            "postcode": "14900000"
+        },
+        "shipping_address": {
+            "street": "Amaral Lyra",
+            "number": 1234,
+            "detail": "Empresa",
+            "neighborhood": "Centro",
+            "city": "Itápolis",
+            "region": "SP",
+            "country": "BR",
+            "postcode": "14900000"
+        },
+        "shipping_method": "Transportadora",
+        "estimated_delivery": "2021-02-28",
+        "shipping_cost": 5.0,
+        "interest": 0.0,
+        "discount": 0.00
+    }
+}

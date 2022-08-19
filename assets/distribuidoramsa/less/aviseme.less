@@ -1,0 +1,81 @@
+/*!
+ * @author Renan Henrique <renan@dcisuporte.com.br>
+ * @return Script AviseMe
+ */
+.modal-aviseme {
+    > div {
+        padding: 15px;
+        background-color: transparent;
+        > label {
+            &.error-aviseme{
+                display: block;
+                margin-top: -15px;
+                margin-bottom: 15px;
+                color: #f5b0ab;
+            }
+        }
+        img{
+            border: 1px solid #eee;
+        }
+        > input[type="hidden"] {
+            display: none;
+        }
+        > input[type="text"],
+        > input[type="email"] {
+            width: 100%;
+            height: 45px;
+            margin-bottom: 15px;
+            border: none;
+            border-bottom: 2px solid #dedede;
+            &.error-aviseme{
+                border-bottom-color: #f5b0ab;
+            }
+            &.valid-aviseme{
+                border-bottom-color: #dedede;
+            }
+        }
+        > button{
+            img{
+                border: none;
+            }
+        }
+        @media (max-width: 768px) {
+            background-color: #fff;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            -webkit-border-radius: 10px;
+            -moz-border-radius: 10px;
+            border-radius: 10px;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            margin: 0;
+        }
+    }
+    // a {
+        // &.fa{
+            // position: absolute;
+            // z-index: 100;
+            // font-size: 26px;
+            // right: -20px;
+            // top: -20px;
+            // background-color: #fff;
+            // border: solid 2px #ccc;
+            // border-radius: 17.5px;
+            // -webkit-border-radius: 17.5px;
+            // -moz-border-radius: 17.5px;
+            // width: 35px;
+            // height: 35px;
+            // line-height: 31.5px;
+            // text-align: center;
+            // color: #ccc;
+            // cursor: pointer;
+            // @media (max-width: 768px){
+                // right: 0;
+                // top: 0;                
+            // }
+        // }
+    // }
+}

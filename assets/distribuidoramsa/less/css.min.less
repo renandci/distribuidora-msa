@@ -1,0 +1,153 @@
+/*!
+ * @author Renan Henrique <renan@dcisuporte.com.br>
+ * @company Data Control Informatica - 16 3262-1365
+ * @name www.tudoenxovais.com.br
+ */
+@import "variables.less";
+@import "../../../../less/mixins/placas-status.less";
+@import "../../../../less/mixins/helpers.less";
+@import "css.less";
+@import "btn.less";
+@import "aviseme.less";
+
+.cx-error,
+.cx-frete-produto,
+.cx-frete-carrinho {
+  display: none;
+  top: 50%;
+  left: 50%;
+  width: 475px;
+  height: 345px;
+  margin: -172.5px 0 0 -237.5px;
+  background-color: #fff;
+  -webkit-box-shadow: 4px 3px 0 rgba(50, 50, 50, 0.4);
+  -moz-box-shadow: 4px 3px 0 rgba(50, 50, 50, 0.4);
+  box-shadow: 4px 3px 0 rgba(50, 50, 50, 0.4);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  position: fixed;
+  z-index: 999999;
+  @media (max-width: 768px) {
+    border: 15px solid transparent;
+    background-color: transparent;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+  > div {
+    padding: 15px;
+    background-color: transparent;
+    @media (max-width: 768px) {
+      background-color: #fff;
+      -webkit-box-shadow: none;
+      -moz-box-shadow: none;
+      box-shadow: none;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      margin: 0;
+    }
+  }
+  a {
+    &.fa {
+      z-index: 100;
+      font-size: 26px;
+      right: -20px !important;
+      top: -20px !important;
+      background-color: #fff;
+      border: solid 2px #ccc;
+      border-radius: 17.5px;
+      -webkit-border-radius: 17.5px;
+      -moz-border-radius: 17.5px;
+      width: 35px;
+      height: 35px;
+      line-height: 31.5px;
+      text-align: center;
+      color: #ccc;
+      @media (max-width: 768px) {
+        font-size: 25px;
+        right: 0 !important;
+        top: 0 !important;
+        border: none;
+        border-radius: 0;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        width: auto;
+        height: auto;
+        line-height: inherit;
+      }
+    }
+  }
+}
+
+.molde-pedido {
+  width: 800px;
+  height: 600px;
+  margin: -300px 0 0 -400px;
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+  }
+}
+
+.loader {
+  border: 5px solid lighten(#7fd3ef, 19%);
+  border-radius: 100%;
+  border-top: 5px solid @cor-base;
+  width: 45px;
+  height: 45px;
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.bg-overlay {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 998;
+  background-color: fade(#000, 30%);
+  display: none;
+  .loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -22.5px 0 0 -22.5px;
+    z-index: 999;
+  }
+}

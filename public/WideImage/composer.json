@@ -1,0 +1,12 @@
+{
+  "config": {
+    "optimize-autoloader": true
+  },
+  "require": {
+  },
+  "autoload": {
+    "psr-4": {
+        "WideImage\\": "lib/"
+    }
+  }
+}

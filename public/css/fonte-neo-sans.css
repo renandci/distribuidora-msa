@@ -1,0 +1,20 @@
+@font-face {
+  font-family: 'neo sans light';
+  src: url('/public/fonts/neo-sans/neo-sans-light.eot');
+  src: url('/public/fonts/neo-sans/neo-sans-light.eot?#iefix') format('embedded-opentype'), url('/public/fonts/neo-sans/neo-sans-light.woff') format('woff'), url('/public/fonts/neo-sans/neo-sans-light.ttf') format('truetype'), url('/public/fonts/neo-sans/neo-sans-light.svg#svgFontName') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'neo sans medium';
+  src: url('/public/fonts/neo-sans/neo-sans-medium.eot');
+  src: url('/public/fonts/neo-sans/neo-sans-medium.eot?#iefix') format('embedded-opentype'), url('/public/fonts/neo-sans/neo-sans-medium.woff') format('woff'), url('/public/fonts/neo-sans/neo-sans-medium.ttf') format('truetype'), url('/public/fonts/neo-sans/neo-sans-medium.svg#svgFontName') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+.neo-sans-light {
+  font-family: 'neo sans light', sans-serif;
+}
+.neo-sans-medium {
+  font-family: 'neo sans medium', sans-serif;
+}

@@ -1,0 +1,84 @@
+<?php
+include '../settings.php';
+include '../vendor/autoload.php';
+include '../settings-config.php';
+include '../includes/bibli-funcoes.php';
+include '../includes/ajax-emails.php';
+
+class Juno extends AbstractJuno {
+
+}
+
+try {
+	
+	$url 		= sprintf('https://%s.boletobancario.com/boletofacil/integration/api/v1/fetch-payment-details', ($CONFIG['boleto_mode'] == 0 ? 'sandbox' : 'www'));
+	
+	$pay_token 	= filter_input(INPUT_POST, 'paymentToken');
+	$cod_refer 	= filter_input(INPUT_POST, 'chargeReference');
+	// $cod_refer 	= '0000000064050';
+	
+	if( empty($pay_token) || empty($cod_refer) ) {
+		throw new Exception('Não autorizado');
+	}
+	
+	$ch = curl_init($url);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+	curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+	curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+	// curl_setopt($ch, CURLOPT_POSTFIELDS, ['paymentToken' => '7DB38743E2C2296C87CA35BEB4978969']);
+	curl_setopt($ch, CURLOPT_POSTFIELDS, ['paymentToken' => $pay_token]);
+
+	$response = curl_exec($ch);
+	
+	if($response === FALSE){
+		return curl_error($ch);
+	}
+	curl_close($ch);
+	
+	$json = json_decode($response);
+
+	if( empty( $json->success ) ){
+		throw new Exception('Error interno');
+	}
+
+	$rws = Lojas::connection()->query(sprintf('select id from pedidos where codigo like "%s" and forma_pagamento = "Boleto"', (string)$cod_refer))->fetch();
+	
+	$status = $json->data->payment->status;
+	
+	// AUTHORIZED		Pagamento autorizado (Aguardando confirmação)
+	// DECLINED			Pagamento rejeitado pela análise de risco.
+	// FAILED			Pagamento não realizado
+	// NOT_AUTHORIZED	Pagamento não autorizado pela instituição responsável pelo cartão de crédito
+	// CONFIRMED		Pagamento confirmado
+	
+	$str = [];
+	
+	switch( $status ) {
+		case 'CONFIRMED': 
+			$str['status'] = 3;
+			$str['mensagem'] = 'O pagamento foi aprovado e acreditado.';
+		break;
+		
+		case 'AUTHORIZED': 
+			$str['status'] = 11;
+			$str['mensagem'] = 'Pagamento autorizado (Aguardando confirmação)';
+		break;
+		
+		case 'FAILED': 
+		case 'DECLINED': 
+		case 'NOT_AUTHORIZED': 
+			$str['status'] = 5;
+			$str['mensagem'] = 'O pagamento não foi efetuado dentro da data prevista. Mas caso você ainda tenha interesse na compra, clique na opção pagar novamente.';		
+		break;
+	}
+	
+	$UpStatus = Pedidos::find((int)$rws['id']);
+    $UpStatus->status = $str['status'];
+    $UpStatus->save();
+	
+	PedidosLogs::logs((int)$rws['id'], 0, $str['mensagem'], $str['status']);
+	
+} catch (Exception $ex) {
+	echo $ex->getMessage();
+}

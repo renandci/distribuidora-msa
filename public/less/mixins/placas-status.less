@@ -1,0 +1,95 @@
+/**
+ * @author Renan Henrique <renan@dcisuporte.com.br>
+ * @company Data Control Infomatica
+ * @return Placas para promoções|exclusivo ou outros tipo de status para a vitrine dos produtos
+ */
+.placas-status {
+    width: 100%;
+    height: 25px;
+    top: -7px;    
+    left: 15px;
+	padding-left: 5px;
+	position: absolute;
+	z-index: 1;
+    &:before {
+        left: 0px;
+        top: -7px;
+        content: "";
+        position: absolute;
+        border: 7px solid transparent;
+        border-bottom-color: #4283a4;
+	}
+	> span {
+		/*-webkit-border-bottom-left-radius: 6px;*/
+		/*-webkit-border-bottom-right-radius: 6px;*/
+		/*-webkit-border-top-right-radius: 6px;*/
+		/*-moz-border-radius-bottomleft: 6px;*/
+		/*-moz-border-radius-bottomright: 6px;*/
+		/*-moz-border-top-right-radius: 6px;*/
+		/*border-bottom-left-radius: 6px;*/
+		/*border-bottom-right-radius: 6px;*/
+		/*border-top-right-radius: 6px;*/
+		top: 0;
+		left: 2.5px;
+		width: auto;
+		height: 25px;
+		background-color: #fa3a47;
+		z-index: 2;
+		float: left;
+		color: #fff;
+		line-height: 24px;
+		font-weight: 300;
+		font-size: 11px;
+		text-align: center;
+		position: relative;
+        text-transform: uppercase;
+        font-family: inherit;
+		padding-left: 5px;
+		padding-right: 5px;
+        &:last-of-type {
+            -webkit-border-bottom-left-radius: 0px;
+            -moz-border-radius-bottomleft: 0px;
+            border-bottom-left-radius: 0px;
+            
+            border-top-right-radius: 6px;
+            -moz-border-top-right-radius: 6px;
+            -webkit-border-top-right-radius: 6px;
+            
+            -webkit-border-bottom-right-radius: 0px;
+            -moz-border-radius-bottomright: 0px;
+            border-bottom-right-radius: 0px;
+        }
+        &:nth-child(1) {
+            -webkit-border-bottom-left-radius: 6px;
+            -moz-border-radius-bottomleft: 6px;
+            border-bottom-left-radius: 6px;
+        }
+        // &.placa-envio-imediato {
+		// 	background-color: #5cb85c;
+		// }
+		// &.placa-promocao {
+		// 	background-color: #fa3a47;
+		// }
+		// &.placa-personalizado {
+		// 	background-color: lighten(#3aae34, 23%);
+		// }
+		// &.placa-exclusivo{
+		// 	background-color: #003770;
+		// }
+		// &.placa-lancamento {
+		// 	background-color: #48b24b;
+		// }
+		// &.placa-blackfriday, 
+		// &.placa-black-friday {
+		// 	// font-weight: bold;
+		// 	background-color: #000;
+		// 	color: #fff;
+		// }
+		@media(max-width: 768px) {
+			height: 15px;
+			line-height: 15px;
+			font-size: 10px;
+		}
+	}
+}
+

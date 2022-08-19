@@ -1,0 +1,134 @@
+<?php
+include '../settings.php';
+include '../vendor/autoload.php';
+include '../settings-config.php';
+include '../includes/bibli-funcoes.php';
+
+$id_pedido = isset($GET['id']) ? $GET['id'] : '';
+if ( ! $id_pedido ) {
+	exit('Error');
+}
+
+class Juno extends AbstractJuno {
+
+}
+
+$sql = '' 
+	 . 'SELECT ' 	 
+	 . 'cli.nome, ' 
+	 . 'cli.cpfcnpj, ' 
+	 . 'cli.email, ' 
+	 . 'cli.telefone, ' 
+	 . 'cli.data_nascimento, ' 
+	 
+	 . 'endcli.endereco, ' 
+	 . 'endcli.numero, ' 
+	 . 'endcli.bairro, ' 
+	 . 'endcli.complemento, ' 
+	 . 'endcli.referencia, ' 
+	 . 'endcli.cidade, ' 
+	 . 'endcli.uf, ' 
+	 . 'endcli.cep, ' 
+	 
+	 . 'ped.id, ' 
+	 . 'ped.codigo, ' 
+	 . 'ped.data_venda, ' 
+	 . 'ped.frete_tipo, ' 
+	 . 'ped.frete_valor, ' 
+	 . 'ped.desconto_boleto, ' 
+	 . 'ped.desconto_cupom, ' 
+	 . 'ped.valor_compra ' 
+	 
+	 . 'FROM pedidos ped ' 
+	 . 'INNER JOIN pedidos_enderecos endcli on endcli.id_pedido = ped.id ' 
+	 . 'INNER JOIN clientes cli on cli.id = ped.id_cliente ' 
+	 . 'WHERE ped.id=?';
+$Pedido = Pedidos::find_by_sql( $sql, [ $id_pedido ] );
+$Pedidos = current($Pedido)->to_array();
+
+// Caso exista um boleto já na base de dados
+if( PedidosTransacoes::count([ 'conditions' => [ 'pedidos_id=?', $Pedidos['id'] ] ]) == 1) {
+	$PedidosTransacoes = PedidosTransacoes::first([ 'conditions' => [ 'pedidos_id=?', $Pedidos['id'] ] ]);
+	header('Location: ' . $PedidosTransacoes->boleto_link);
+	return;
+}
+
+$TOTAL = valor_pagamento( $Pedidos['valor_compra'], $Pedidos['frete_valor'], $Pedidos['desconto_cupom'], '$', $Pedidos['desconto_boleto'] );
+$TOTAL_COMPRA_C_BOLETO = str_replace(',', '.', $TOTAL['TOTAL_COMPRA_C_BOLETO']);
+
+$juno = new Juno();
+
+//CONFIGURAÇÕES DA API
+$juno->options([
+	'token' => '16478C2F7DA871FF8D21FF9706BF48B39A91A2144D4D7DED3EA09FAA8827514F',
+	'sandbox' => true
+]);
+
+//REALIZANDO CADASTRO DE UMA NOVA COBRANCA
+$response = $juno->createCharge([
+	'description' 	=> 'essa e uma descricao de pagamento',
+	'amount'		=> 15.9,
+	'dueDate'		=> date('d/m/Y'),
+	'payerName'		=> 'Thiago Henrique',
+	'payerCpfCnpj'	=> '09191332400'
+]);
+
+print_r($response);
+
+return;
+
+$BoletoFacil = new BoletoFacil\BoletoFacil($CONFIG['boleto_token'], ($CONFIG['boleto_mode'] == 0 ? true : false));
+
+print_r($BoletoFacil->authorize());
+
+return;
+$BoletoFacil->createCharge(
+	$Pedidos['nome'], 
+		(new ValidaCPFCNPJ( soNumero($Pedidos['cpfcnpj']) ))->formata(), 
+			"PED.: {$Pedidos['codigo']}", 
+				number_format( $TOTAL_COMPRA_C_BOLETO, 2, '.', ''), 
+					date('d/m/Y', strtotime("{$CONFIG['boleto_venc']} days", strtotime( $Pedidos['data_venda'] ))) );
+
+$BoletoFacil->reference = $Pedidos['codigo'];
+$BoletoFacil->payerPhone = $Pedidos['telefone'];
+$BoletoFacil->payerEmail = $Pedidos['email'];
+$BoletoFacil->installments = 1;
+$BoletoFacil->notificationUrl = URL_BASE . 'boleto-status';
+// $BoletoFacil->notificationUrl = 'https://www.cchic.com.br/boleto/status.php';
+
+// Envio de endereco para o boleto facil
+if( isset($Pedidos['endereco'], $Pedidos['numero'], $Pedidos['cidade'], $Pedidos['uf'], $Pedidos['cep']) ){
+	$BoletoFacil->billingAddressStreet 	= $Pedidos['endereco'];
+	$BoletoFacil->billingAddressNumber 	= $Pedidos['numero'];
+	$BoletoFacil->billingAddressCity 	= $Pedidos['cidade'];
+	$BoletoFacil->billingAddressState	= $Pedidos['uf'];
+	$BoletoFacil->billingAddressPostcode= soNumero($Pedidos['cep']);
+}
+
+$result = $BoletoFacil->issueCharge();
+$json = json_decode($result);
+
+if($json->success > 0) {
+    $json = $json->data->charges[0];
+    $PedBoleto = new PedidosTransacoes();
+    $PedBoleto->pedidos_id = $Pedidos['id'];
+    $PedBoleto->boleto_code =$json->code;
+    $PedBoleto->boleto_date = $json->dueDate;
+    $PedBoleto->boleto_number = $json->payNumber;
+    $PedBoleto->boleto_link = $json->link;
+    
+    // ativar para ir a outra pagina
+    if( $PedBoleto->save() > 0) {
+		// header('Location: /identificacao/obrigado/?linkboleto=' . base64_encode( $json->link ) . '&pedidos_id=' . $Pedidos['id'] );
+		header('Location: ' . $json->link);
+		return;
+    }
+} 
+else {
+	echo ''
+        . '<h2>Desculpe</h2>'
+        . '<p>Não foi possível realizar o impresso do boleto.</p>'
+		. "<pre>{$json->errorMessage}</pre>";
+		print_r($json);
+		return;
+}

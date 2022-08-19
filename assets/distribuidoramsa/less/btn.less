@@ -1,0 +1,124 @@
+.btn {
+	font-family: 'Helvetica Rounded Bold Cond';
+	border-width: 1px 1px 3px 1px !important;
+	text-transform: uppercase;
+	
+    &-primary {
+		color:#fff !important;
+		background-color: darken(@cor-02, 3%);
+		border-style: solid;
+		border-color: darken(@cor-02, 7%);
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: darken(@cor-02, 7%);
+			border-color: darken(@cor-02, 11%);
+		}
+		&.disabled{
+			&:hover {
+				background-color: darken(@cor-02, 9%);
+			}
+		}
+		&-default{
+			background-color: transparent;
+			border-color: darken(@cor-02, 12%);
+			border-width: 1px;
+			border-style: solid;
+			color: darken(@cor-02, 12%) !important;
+			&:hover,
+			&:active,
+			&:focus {
+				border-color: darken(@cor-02, 17%);
+				color: darken(@cor-02, 17%) !important;
+			}
+		}
+	}
+    
+    &-aviseme {
+        background-color: mix(#000, #fff, 30%);
+        color:#fff!important;
+        &:hover,
+		&:active,
+		&:focus {
+            background-color: mix(#000, #fff, 50%);
+            border-color: mix(#000, #fff, 50%);
+        }
+        &.disabled{
+            &:hover {
+               background-color: mix(#000, #fff, 50%);
+            }
+        }
+    }
+    
+    &-secundary {
+        text-shadow: none;
+        background-color: mix(#000, #fff, 30%);
+        color: #fff;
+        &:hover,
+		&:active,
+		&:focus {
+			color: #fff;
+            background-color: mix(#000, #fff, 50%);
+            border-color: mix(#000, #fff, 50%);
+        }
+    }
+	
+	&-add-carrinho-ralacinados{
+		background-color: darken(@cor-03, 12%);
+		color:#fff!important;
+		&:hover,
+		&:active,
+		&:focus {
+			background-color: darken(@cor-03, 17%);
+		}
+		&.disabled{
+			&:hover {
+				background-color: darken(@cor-03, 9%);
+			}
+		}
+	}
+	
+    &-blue {
+        background-color: #927168;
+        color:#fff!important;
+        &:hover,
+		&:active,
+		&:focus {
+            background-color: #7b5c53
+        }
+    }
+    &-orange {
+        background-color: #699e73;
+        color:#fff!important;
+        &:hover,
+		&:active,
+		&:focus {
+            background-color: #699e73;
+        }
+    }
+    &-block {
+        display:block;
+        width:100%;
+        padding-left:0;
+        padding-right:0
+    }
+    &-promocode {
+        margin: 0 0 0 5px;
+        padding: 5px 10px;
+    }
+    &-add-address {
+        margin: 7px 0 0;
+        padding: 5px 10px;
+        font-size: 11px;
+    }
+	&-frete{
+		background-color: @cor-04;
+        color: @cor-03;
+        &:hover,
+		&:active,
+		&:focus {
+			color: @cor-03;
+            background-color: @cor-04;
+        }
+	}
+}

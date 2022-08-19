@@ -1,0 +1,16 @@
+.featured-products {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 75px;
+  color: white !important;
+  background-color: #002e5d;
+  font-size: 26px;
+  font-weight: 800;
+  border-radius: 5px;
+  margin-bottom: 26px;
+}
+.featured-products > h1 {
+  margin: 0;
+}

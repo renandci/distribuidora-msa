@@ -1,0 +1,416 @@
+// .title-produto {
+// 	font-family: inherit;
+// 	font-size: 32px;
+// }
+.border-bottom-dotted {
+  border-bottom: dotted 1px #ccc;
+}
+.produtos-variacoes {
+  > li {
+    &.text-input-comum-atacadista {
+      > div {
+        background-color: darken(#fff, 7%);
+        padding: 5px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        text-align: center;
+      }
+      .hex-colors {
+        width: 25px;
+        height: 25px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1;
+        -webkit-box-shadow: 0 0 0 1px #d6d6d6;
+        -moz-box-shadow: 0 0 0 1px #d6d6d6;
+        box-shadow: 0 0 0 1px #d6d6d6;
+        border: 2px solid transparent;
+        &:hover,
+        &.hex-colors-active {
+          -webkit-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          -moz-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+        }
+        &.not-estoque {
+          position: relative;
+          /* Theoretically for IE 8 & 9 (more valid) */
+          /* ...but not required as filter works too */
+          /* should come BEFORE filter */
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // IE8
+
+          /* This works in IE 8 & 9 too */
+          /* ... but also 5, 6, 7 */
+          filter: alpha(opacity=50); // IE 5-7
+
+          /* Modern Browsers */
+          opacity: 0.5;
+          &:before {
+            content: "x" !important;
+            font-size: 13px;
+            float: right;
+            top: 100%;
+            right: 0;
+            margin: -9px 0px 0px;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            line-height: 6px;
+            background-color: darken(#ddd, 5%);
+            text-align: center;
+            z-index: 3;
+          }
+        }
+        > span {
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          > span {
+            z-index: 1;
+            position: absolute;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            overflow: hidden;
+            top: 50%;
+            left: 50%;
+            border-bottom: 50px solid transparent;
+            border-left: 50px solid transparent;
+            margin-left: -25px;
+            margin-top: -25px;
+          }
+        }
+      }
+    }
+    // Paleta de cores
+    &.hex-colors {
+      margin: 0 2px;
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      > a {
+        width: 25px;
+        height: 25px;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+        display: block;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        padding: 0;
+        z-index: 1;
+        -webkit-box-shadow: 0 0 0 1px #d6d6d6;
+        -moz-box-shadow: 0 0 0 1px #d6d6d6;
+        box-shadow: 0 0 0 1px #d6d6d6;
+        border: 2px solid transparent;
+        &:hover,
+        &.hex-colors-active {
+          -webkit-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          -moz-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+        }
+        &.not-estoque {
+          position: relative;
+          /* Theoretically for IE 8 & 9 (more valid) */
+          /* ...but not required as filter works too */
+          /* should come BEFORE filter */
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // IE8
+
+          /* This works in IE 8 & 9 too */
+          /* ... but also 5, 6, 7 */
+          filter: alpha(opacity=50); // IE 5-7
+
+          /* Modern Browsers */
+          opacity: 0.5;
+          &:before {
+            content: "x" !important;
+            font-size: 13px;
+            float: right;
+            top: 100%;
+            right: 0;
+            margin: -9px 0px 0px;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            line-height: 6px;
+            background-color: darken(#ddd, 5%);
+            text-align: center;
+            z-index: 3;
+          }
+        }
+        > span {
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          overflow: hidden;
+          > span {
+            z-index: 1;
+            position: absolute;
+            width: 0;
+            height: 0;
+            font-size: 0;
+            overflow: hidden;
+            top: 50%;
+            left: 50%;
+            border-bottom: 200px solid transparent;
+            border-left: 200px solid transparent;
+            margin-left: -100px;
+            margin-top: -100px;
+          }
+        }
+        > input[type="radio"] {
+          display: none;
+          + label {
+            cursor: pointer;
+            z-index: 2;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            top: 0;
+            left: 0;
+            font-size: 0px;
+            &:before {
+              content: "." !important;
+              font-size: 0px;
+            }
+          }
+        }
+      }
+
+      &.is_icon {
+        width: 35px;
+        height: 35px;
+        > a {
+          width: 35px;
+          height: 35px;
+          > span {
+            background-position: center center !important;
+            background-size: contain !important;
+            > span {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    &.text-input-comum {
+      margin: 0 2px;
+      width: auto;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+      > a {
+        float: left;
+        display: block;
+        height: 25px;
+        line-height: 22px;
+        background-color: #ddd;
+        -webkit-box-shadow: 0 0 0 1px #d6d6d6;
+        -moz-box-shadow: 0 0 0 1px #d6d6d6;
+        box-shadow: 0 0 0 1px #d6d6d6;
+        border: 2px solid #fff;
+        border-radius: 2px;
+        -moz-border-radius: 2px;
+        -webkit-border-radius: 2px;
+
+        &:hover,
+        &.text-input-comum-active {
+          color: #fff;
+          background-color: #ccc;
+          -webkit-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          -moz-box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+          box-shadow: 0 0 0 1px darken(#d6d6d6, 40%);
+        }
+
+        &.not-estoque {
+          position: relative;
+          /* Theoretically for IE 8 & 9 (more valid) */
+          /* ...but not required as filter works too */
+          /* should come BEFORE filter */
+          -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=50)"; // IE8
+
+          /* This works in IE 8 & 9 too */
+          /* ... but also 5, 6, 7 */
+          filter: alpha(opacity=50); // IE 5-7
+
+          /* Modern Browsers */
+          opacity: 0.5;
+          &:before {
+            content: "x" !important;
+            font-size: 13px;
+            float: right;
+            top: 100%;
+            right: 0;
+            margin: -9px 0px 0px;
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            line-height: 6px;
+            background-color: darken(#ddd, 5%);
+            text-align: center;
+            z-index: 3;
+          }
+        }
+
+        > input[type="radio"] {
+          display: none;
+          + label {
+            z-index: 2;
+            cursor: pointer;
+            position: relative;
+            display: block;
+            padding: 0 7.5px;
+            height: 22px;
+            line-height: 22px;
+            margin: 0;
+            top: 0;
+            left: 0;
+            &:before {
+              content: "." !important;
+              font-size: 0px;
+            }
+          }
+          &:hover,
+          &:checked {
+            + label {
+              background-color: #aaa;
+              color: #fff;
+              &:before {
+                content: "." !important;
+                font-size: 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+.form-frete {
+  > p {
+    font-size: 18px;
+  }
+  > .form-frete {
+    input,
+    span {
+      margin: 5px 0 0 0;
+      vertical-align: top;
+      height: 37px;
+      line-height: 37px;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+    }
+    button {
+      margin: 5px 0 0 0;
+      background-color: #999999;
+      color: #fff;
+      height: 37px;
+      display: inline-block;
+      *display: inline;
+      *zoom: 1;
+    }
+  }
+}
+
+.btn-comprar-mobile {
+  @media (max-width: 768px) {
+    bottom: 0;
+    position: fixed;
+    background-color: #fff;
+    padding: 7.5px 15px;
+    border-top-color: #ddd;
+    border-top-width: 1px;
+    border-top-style: solid;
+    border-right-color: #ddd;
+    border-right-width: 1px;
+    border-right-style: solid;
+    width: 60%;
+    // width: 100%;
+    left: 0;
+    margin: 0;
+    z-index: 2;
+    > #price-mobile {
+      // width: 65%;
+      width: 100%;
+      text-align: left;
+      float: left;
+      font-size: 10px;
+    }
+    .btn {
+      // width: 35%;
+      width: 100%;
+      padding: 10/2px 16/2px;
+      float: right;
+      > .fa {
+        font-size: inherit;
+      }
+      > span {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.solicite-orcamento {
+  > div {
+    border-bottom-color: #ddd;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+
+    &:nth-child(1) {
+      > p {
+        text-align: center;
+        background-color: #f1f1f1;
+      }
+    }
+
+    &:nth-child(5) {
+      border-bottom: none;
+    }
+
+    // &:nth-child(3) {
+    // border-bottom: none;
+    // }
+
+    > strong {
+      font-weight: normal;
+      // font-size: 32px;
+      // font-family: 'Bebas Neue';
+      // vertical-align: bottom;
+    }
+    > span {
+      font-size: 22px;
+      .to-whatsapp {
+        color: #009688;
+      }
+      .to-facebook {
+        color: #3b5998;
+      }
+      .to-phone {
+        color: #444;
+      }
+    }
+  }
+}

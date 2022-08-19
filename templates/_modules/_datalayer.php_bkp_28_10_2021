@@ -1,0 +1,124 @@
+<!-- Google Tag Manager -->
+<?php
+$STORE['dataLayer']['modulo'] = $modulo != 'identificacao' ? $modulo : $ACAO_GET;
+$STORE['dataLayer']['id'] = $CONFIG['google_tag_manager'];
+$STORE['dataLayer']['title'] = $STORE['TITULO_PAGINA'];
+?>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+  <?php ob_start(); ?>
+  var dataLayer = window.dataLayer || [];
+  // Layer Index
+  <?php if ('index' == $STORE['dataLayer']['modulo']) { ?>
+    dataLayer = [{
+      pageTitle: "<?php echo $STORE['dataLayer']['title'] ?>",
+      pageCategory: "<?php echo $STORE['dataLayer']['modulo'] ?>",
+      event: ""
+    }];
+  <?php } ?>
+
+  // Layer Produto
+  <?php if ('produto' == $STORE['dataLayer']['modulo']) { ?>
+    dataLayer = [{
+      event: "",
+      pageTitle: "<?php echo $STORE['dataLayer']['title'] ?>",
+      pageCategory: "<?php echo $STORE['dataLayer']['modulo'] ?>",
+      transactionProducts: <?php echo json_encode($STORE['dataLayer']['produto'], JSON_UNESCAPED_UNICODE) ?>
+    }];
+  <?php } ?>
+
+  // Layer Produtos
+  <?php if ('produtos' == $STORE['dataLayer']['modulo']) { ?>
+    dataLayer = [{
+      pageTitle: "<?php echo $STORE['dataLayer']['title'] ?>",
+      pageCategory: "<?php echo $STORE['dataLayer']['modulo'] ?>",
+      event: ""
+    }];
+  <?php } ?>
+
+  // Layer Carrinho ou Minha Compra 'final'
+  <?php if (
+    'carrinho' == $STORE['dataLayer']['modulo'] ||
+    'minha-compra' == $STORE['dataLayer']['modulo'] ||
+    'checkout-new' == $STORE['dataLayer']['modulo']
+  ) {
+
+    foreach ($CONFIG['carrinho_all'] as $rws) {
+      $STORE['dataLayer']['produtos'][] = [
+        'url' => implode('/', [substr(URL_BASE, 0, -1), 'produto', converter_texto($rws->nome_produto), $rws->id]),
+        'sku' => CodProduto($rws->nome_produto, $rws->id),
+        'name' => $rws->nome_produto,
+        'price' => $rws->preco_promo,
+        'quantity' => $rws->quantidade,
+        'image' => Imgs::src($rws->imagem, 'smalls'),
+      ];
+      $TOTAL_FRETE = $rws->frete_valor;
+      $CUPOM_VALOR = $rws->cupom_value;
+      $CUPOM_TIPO = $rws->cupom_desconto;
+      $TOTAL_CARRINHO += ($rws->preco_promo * $rws->quantidade);
+    }
+    $TOTAL_DATA_LAYER = valor_pagamento($TOTAL_CARRINHO, $TOTAL_FRETE, $CUPOM_VALOR, $CUPOM_TIPO, $CONFIG['desconto_boleto']);
+    $STORE['dataLayer']['total'] = $TOTAL_DATA_LAYER['TOTAL_COMPRA'];
+  ?>
+    dataLayer = [{
+      event: "",
+      pageTitle: "<?php echo $STORE['dataLayer']['title'] ?>",
+      pageCategory: "<?php echo $STORE['dataLayer']['modulo'] ?>",
+      transactionProducts: <?php echo json_encode($STORE['dataLayer']['produtos'], JSON_UNESCAPED_UNICODE) ?>,
+      transactionTotal: <?php echo number_format($STORE['dataLayer']['total'], 2, '.', '') ?>
+    }];
+  <?php } ?>
+
+  // Layer Pagamento Finalizado
+  <?php
+  if ('obrigado' == $STORE['dataLayer']['modulo'] || 'finalizado' == $STORE['dataLayer']['modulo']) {
+
+    $pedidos_id = filter_input(INPUT_GET, 'pedidos_id', FILTER_SANITIZE_NUMBER_INT);
+    $PedidosDataLayer = null;
+    if (!empty($pedidos_id)) {
+      $PedidosDataLayer = Pedidos::find($pedidos_id);
+
+      foreach ($PedidosDataLayer->pedidos_vendas as $rws) {
+        $STORE['dataLayer']['produtos'][] = [
+          'url' => implode('/', [substr(URL_BASE, 0, -1), 'produto', converter_texto($rws->produto->nome_produto), $rws->produto->id]),
+          'sku' => CodProduto($rws->produto->nome_produto, $rws->produto->id),
+          'name' => $rws->produto->nome_produto,
+          'price' => $rws->valor_pago,
+          'quantity' => $rws->quantidade,
+          'image' => Imgs::src($rws->produto->capa->imagem, 'smalls'),
+        ];
+
+        $TOTAL_CARRINHO += ($rws->valor_pago * $rws->quantidade);
+      }
+      $TOTAL_FRETE = $PedidosDataLayer->frete_valor;
+      $DESCONTO_BOLETO = $PedidosDataLayer->desconto_boleto;
+      $CUPOM_VALOR = $PedidosDataLayer->desconto_cupom;
+      $CUPOM_TIPO = '$';
+      $TOTAL_DATA_LAYER = valor_pagamento($TOTAL_CARRINHO, $TOTAL_FRETE, $CUPOM_VALOR, $CUPOM_TIPO, $DESCONTO_BOLETO);
+
+      $STORE['dataLayer']['total'] = $TOTAL_DATA_LAYER['TOTAL_COMPRA'];
+      $STORE['dataLayer']['venda_cod'] = $PedidosDataLayer->codigo;
+      $STORE['dataLayer']['frete_vl'] = $TOTAL_FRETE;
+      $STORE['dataLayer']['boleto_desc'] = $PedidosDataLayer->desconto_boleto;
+    }
+  ?>
+    dataLayer = [{
+      event: "orderPlaced",
+      pageTitle: "<?php echo $STORE['dataLayer']['title'] ?>",
+      pageCategory: "<?php echo $STORE['dataLayer']['modulo'] ?>",
+      orderId: "<?php echo $STORE['dataLayer']['venda_cod'] ?>",
+      transactionProducts: <?php echo json_encode($STORE['dataLayer']['produtos'], JSON_UNESCAPED_UNICODE) ?>,
+      shippingTotal: <?php echo number_format($STORE['dataLayer']['frete_vl'], 2, '.', '') ?>,
+      <?php echo ($STORE['dataLayer']['boleto_desc'] > 0 ? 'transactionDescontos: "' . $STORE['dataLayer']['boleto_desc'] . '%", ' : '') ?>
+      transactionTotal: <?php echo number_format($STORE['dataLayer']['total'], 2, '.', '') ?>,
+    }];
+  <?php } ?>
+
+  <?php
+  // instancia e joga o javascript na tela
+  // $JSqueeze = new Patchwork\JSqueeze();
+  // $content = $JSqueeze->squeeze(ob_get_clean(), true, false, false);
+  // echo $content;
+  echo ob_get_clean();
+  ?>
+</script>

@@ -1,0 +1,30 @@
+/*
+ * @breadcrumb
+ */
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+	text-transform: uppercase;
+    @media (max-width: 768px){
+        line-height: 19px;
+        font-size: 11px;
+    }
+    > li {
+        display: inline-block;
+        *display: inline;
+        *zoom: 1;
+        .active {
+            text-decoration: underline;
+        }
+    }
+    > li + li{
+        &:before {
+            padding: 0 5px;
+            color: #ccc;
+            content: "/\00a0";
+        }
+    }
+}

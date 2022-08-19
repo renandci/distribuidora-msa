@@ -1,0 +1,193 @@
+/*!
+ * @helper Bloqueio animado de tela para carregamento do html
+ */
+.bloqueia-cadastro {
+	position: fixed;
+	top: 0;
+	left: 0;
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	background-color: rgba(255,255,255,0.3);
+	z-index: 99999;
+}
+
+#bloqueioG {
+	position: absolute;
+	width: 234px;
+	height: 28px;
+	left: 50%;
+	top: 50%;
+	margin: 0 -14px 0 -117px;
+}
+
+.bloqueioG {
+	position: absolute;
+	top: 0;
+	background-color: rgba(0,0,0,0);
+	width: 28px;
+	height: 28px;
+	animation-name: bounce_bloqueioG;
+	-o-animation-name: bounce_bloqueioG;
+	-ms-animation-name: bounce_bloqueioG;
+	-webkit-animation-name: bounce_bloqueioG;
+	-moz-animation-name: bounce_bloqueioG;
+	animation-duration: 1.5s;
+	-o-animation-duration: 1.5s;
+	-ms-animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+	-moz-animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	-ms-animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	animation-direction: normal;
+	-o-animation-direction: normal;
+	-ms-animation-direction: normal;
+	-webkit-animation-direction: normal;
+	-moz-animation-direction: normal;
+	transform: scale(.3);
+	-o-transform: scale(.3);
+	-ms-transform: scale(.3);
+	-webkit-transform: scale(.3);
+	-moz-transform: scale(.3);
+	border-radius: 19px;
+	-o-border-radius: 19px;
+	-ms-border-radius: 19px;
+	-webkit-border-radius: 19px;
+	-moz-border-radius: 19px;
+}
+
+#bloqueioG_1 {
+	left: 0;
+	animation-delay: 0.6s;
+	-o-animation-delay: 0.6s;
+	-ms-animation-delay: 0.6s;
+	-webkit-animation-delay: 0.6s;
+	-moz-animation-delay: 0.6s;
+}
+
+#bloqueioG_2 {
+	left: 29px;
+	animation-delay: 0.75s;
+	-o-animation-delay: 0.75s;
+	-ms-animation-delay: 0.75s;
+	-webkit-animation-delay: 0.75s;
+	-moz-animation-delay: 0.75s;
+}
+
+#bloqueioG_3 {
+	left: 58px;
+	animation-delay: 0.9s;
+	-o-animation-delay: 0.9s;
+	-ms-animation-delay: 0.9s;
+	-webkit-animation-delay: 0.9s;
+	-moz-animation-delay: 0.9s;
+}
+
+#bloqueioG_4 {
+	left: 88px;
+	animation-delay: 1.05s;
+	-o-animation-delay: 1.05s;
+	-ms-animation-delay: 1.05s;
+	-webkit-animation-delay: 1.05s;
+	-moz-animation-delay: 1.05s;
+}
+
+#bloqueioG_5 {
+	left: 117px;
+	animation-delay: 1.2s;
+	-o-animation-delay: 1.2s;
+	-ms-animation-delay: 1.2s;
+	-webkit-animation-delay: 1.2s;
+	-moz-animation-delay: 1.2s;
+}
+
+#bloqueioG_6 {
+	left: 146px;
+	animation-delay: 1.35s;
+	-o-animation-delay: 1.35s;
+	-ms-animation-delay: 1.35s;
+	-webkit-animation-delay: 1.35s;
+	-moz-animation-delay: 1.35s;
+}
+
+#bloqueioG_7 {
+	left: 175px;
+	animation-delay: 1.5s;
+	-o-animation-delay: 1.5s;
+	-ms-animation-delay: 1.5s;
+	-webkit-animation-delay: 1.5s;
+	-moz-animation-delay: 1.5s;
+}
+
+#bloqueioG_8 {
+	left: 205px;
+	animation-delay: 1.64s;
+	-o-animation-delay: 1.64s;
+	-ms-animation-delay: 1.64s;
+	-webkit-animation-delay: 1.64s;
+	-moz-animation-delay: 1.64s;
+}
+
+@keyframes bounce_bloqueioG {
+	0% {
+		transform: scale(1);
+		background-color: #75b080;
+	}
+
+	100% {
+		transform: scale(.3);
+		background-color: #fff;
+	}
+}
+
+@-o-keyframes bounce_bloqueioG {
+	0% {
+		-o-transform: scale(1);
+		background-color: #75b080;
+	}
+
+	100% {
+		-o-transform: scale(.3);
+		background-color: #fff;
+	}
+}
+
+@-ms-keyframes bounce_bloqueioG {
+	0% {
+		-ms-transform: scale(1);
+		background-color: #75b080;
+	}
+
+	100% {
+		-ms-transform: scale(.3);
+		background-color: #fff;
+	}
+}
+
+@-webkit-keyframes bounce_bloqueioG {
+	0% {
+		-webkit-transform: scale(1);
+		background-color: #75b080;
+	}
+
+	100% {
+		-webkit-transform: scale(.3);
+		background-color: #fff;
+	}
+}
+
+@-moz-keyframes bounce_bloqueioG {
+	0% {
+		-moz-transform: scale(1);
+		background-color: #75b080;
+	}
+
+	100% {
+		-moz-transform: scale(.3);
+		background-color: #fff;
+	}
+}

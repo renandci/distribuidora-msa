@@ -1,0 +1,33 @@
+{
+    "name": "isaquesb/simple-hydrate",
+    "description": "Simple Data Hydrate",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Isaque de Souza",
+            "role": "developer",
+            "email": "isaquesb@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^4.7"
+    },
+    "autoload" : {
+        "psr-4": {
+            "Simple\\Hydrate\\": "src"
+        }
+    },
+    "config" : {
+        "preferred-install" : "dist"
+    },
+    "scripts": {
+        "test:all":        "phpunit -c phpunit.xml --no-coverage tests",
+        "test:coverage":   "phpunit -c phpunit.xml tests",
+        "test:unit":       "phpunit -c phpunit.xml --no-coverage tests/unit"
+    },
+    "minimum-stability" : "dev",
+    "prefer-stable" : true
+}
