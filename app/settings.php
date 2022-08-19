@@ -37,7 +37,23 @@ $ASSETS    = str_replace($dominios, $nulos, $_SERVER['SERVER_NAME']);
 $HTTP_HOST = $_SERVER['HTTP_HOST'];
 $REQUEST_URI = $_SERVER['REQUEST_URI'];
 $SERVER_PORT = $_SERVER['SERVER_PORT'];
-$HTTP_HOST_TEST = in_array(strstr($HTTP_HOST, '.', true), ['imagens', 'static', 'store', 'imgx']);
+
+$TEST_WWW = substr($HTTP_HOST, 0, 3) != 'www';
+$TEST_DEV = substr($HTTP_HOST, -5) != '.test';
+
+// Redireciona para www
+if ($TEST_WWW) {
+  header('HTTP/1.1 301 Moved Permanently');
+  header(sprintf('Location: http://www.%s%s', $HTTP_HOST, $REQUEST_URI), true, 301);
+  return;
+}
+
+// Redireciona para https
+if ($TEST_DEV && $SERVER_PORT == 80) {
+  header('HTTP/1.1 301 Moved Permanently');
+  header(sprintf('Location: https://%s%s', $HTTP_HOST, $REQUEST_URI), true, 301);
+  return;
+}
 
 // // Redireciona para www
 // if (substr($HTTP_HOST, 0, 3) != 'www' && ! $HTTP_HOST_TEST) {
