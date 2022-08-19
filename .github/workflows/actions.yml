@@ -19,8 +19,8 @@ jobs:
         server: 172.106.0.125
         username: q0qq8b0u
         password: ix6v4Mu09R
-        server-dir: public_html/test/
-        local-dir: assets/distribuidoramsa/imgs/
+        server-dir: public_html/
+        #local-dir: assets/distribuidoramsa/imgs/
 
   job2:
     name: Command Remote SSH
@@ -36,7 +36,7 @@ jobs:
         password: ix6v4Mu09R
         port: 22
         script: |
-          cd /home/q0qq8b0u/public_html/test/
+          cd /home/q0qq8b0u/public_html/app/
           composer update
 
   # job3:

@@ -4,8 +4,10 @@ _pu*
 compiler.php
 index.php
 .htaccess
+sites.xml
 new*
-sites
 nfe-c*
 bkp*
-/app/vendor/
+app/vendor/
+assets/**/imgs/banners/
+assets/**/imgs/produtos/
