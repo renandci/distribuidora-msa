@@ -19,8 +19,8 @@ jobs:
         server: 172.106.0.125
         username: q0qq8b0u
         password: ix6v4Mu09R
-        local-dir: assets/distribuidoramsa/imgs/logo.png
         server-dir: public_html/test/
+        local-dir: assets/distribuidoramsa/imgs/logo.png
 
   # job2:
   #   name: Command Remote SSH
