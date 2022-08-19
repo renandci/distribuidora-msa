@@ -1,6 +1,6 @@
 _assets
 _bkp*
-_pu*
+_public*
 compiler.php
 index.php
 .htaccess
