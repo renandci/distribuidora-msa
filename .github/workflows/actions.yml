@@ -20,7 +20,7 @@ jobs:
         username: q0qq8b0u
         password: ix6v4Mu09R
         local-dir: assets/distribuidoramsa/imgs/logo.png
-        server-dir: public_html/test
+        server-dir: public_html/test/
 
   # job2:
   #   name: Command Remote SSH
