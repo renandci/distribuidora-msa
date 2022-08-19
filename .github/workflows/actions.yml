@@ -34,11 +34,10 @@ jobs:
         host: 172.106.0.125
         username: q0qq8b0u
         password: ix6v4Mu09R
-        port: 22022
+        port: 22
         script: |
           cd /home/q0qq8b0u/public_html/test/
           composer update
-          chown -R q0qq8b0u:q0qq8b0u /home/q0qq8b0u/public_html/test
 
   # job3:
   #   name: GruntJs compress images
