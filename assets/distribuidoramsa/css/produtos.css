@@ -77,72 +77,52 @@
   padding-bottom: 10px;
 }
 .cx-fitros-produtos {
-  /*border-style: solid;*/
-  /*border-width: 1px;*/
-  /*border-color: mix(@cor-base, @cor-04, 88%);*/
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: #124090;
   width: 100%;
-  padding: 15.5px 0;
   margin-bottom: 15px;
   position: relative;
   color: #ffffff;
 }
-.cx-fitros-produtos a,
-.cx-fitros-produtos span {
-  height: 26px;
-  line-height: 26px;
+.cx-fitros-produtos > div {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  height: 59px;
 }
-.cx-fitros-produtos > span {
-  float: left;
+.cx-fitros-produtos > div > span {
+  flex: 1 1 33%;
 }
-.cx-fitros-produtos > span.ordem-produtos select {
-  text-transform: uppercase;
-  width: 100%;
-  height: 100%;
-  padding: 0 15px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
+.cx-fitros-produtos > div > span.paginacao-site {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
 }
-.paginacao-site {
-  text-align: center;
+.cx-fitros-produtos > div > span.paginacao-site a,
+.cx-fitros-produtos > div > span.paginacao-site span {
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  padding: 1px 8px;
 }
-.paginacao-site a,
-.paginacao-site span {
-  width: 25px;
-  border-radius: 3px;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  display: inline-block;
-  *zoom: 1;
-  *display: inline;
-}
-.paginacao-site span {
+.cx-fitros-produtos > div > span.paginacao-site span {
   color: #fff;
   background-color: #042548;
   font-weight: bold;
-  border-radius: 30px;
 }
-@media screen and (max-width: 768px) {
-  .menu {
-    display: none;
-  }
-  .produtos-site {
-    width: 100%;
-  }
-  .ordem-produtos {
-    position: relative;
-    margin: 0;
-    top: 0;
-    left: 0;
-  }
+.cx-fitros-produtos > div > span.ordem-produtos {
+  width: 32px;
+  height: 32px;
 }
-@media screen and (max-width: 320px) {
-  .lista-produtos {
-    width: 100%;
-  }
+.cx-fitros-produtos > div > span.ordem-produtos > select {
+  width: 100%;
 }

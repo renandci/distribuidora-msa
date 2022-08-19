@@ -380,7 +380,7 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
         </li>
 
         <?php echo (($div % 4) == 0) ? '<li class="col-lg-12 hidden-md hidden-sm hidden-xs"><hr/></li>' : '' ?>
-        <?php echo (($div % 2) == 0) ? '<li class="hidden-12 hidden-md hidden-sm col-xs-12"><hr/></li>' : '' ?>
+        <?php echo (($div % 2) == 0) ? '<li class="hidden-lg hidden-md hidden-sm col-xs-12"><hr/></li>' : '' ?>
         <?php // echo (($div % $STORE['lg_line']) == 0) ? '<li class="col-lg-12 hidden-md hidden-sm hidden-xs"><hr/></li>' : '' ?>
         <?php // echo (($div % $STORE['xs_line']) == 0) ? '<li class="hidden-lg hidden-md hidden-sm col-xs-12"><hr/></li>' : '' ?>
 

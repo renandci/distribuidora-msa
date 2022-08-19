@@ -40,7 +40,7 @@
               <span class="desenho-campo-busca ">
                 <input type="text" name="pesquisar" id="pesquisar" placeholder="Procurar" class="input-pesquisar" autocomplete="off" />
                 <button type="submit"><i class="fa fa-search"></i></button>
-                <ul class='pesquisa-rapida retornar-pesquisa'></ul>
+                <!-- <ul class='pesquisa-rapida retornar-pesquisa'></ul> -->
               </span>
             </form>
           </span>
