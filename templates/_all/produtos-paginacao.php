@@ -12,6 +12,7 @@
     // $GET_FILTER = preg_replace('/([a-z_&])\1+/', '$1', $GET_FILTER);
     $GET_FILTER = preg_replace('/pag=[^&]*/', '', $GET_FILTER);
     $GET_FILTER = ltrim($GET_FILTER, '&');
+    $ProdutosTotal = 10;
     ?>
     <span class="paginacao-site">
       <span class="hidden paginacao" href="/produtos<?php echo $GET_PAGINACAO ?>?<?php echo $GET_FILTER ?>"></span>
@@ -22,15 +23,15 @@
           <a href="/produtos<?php echo $GET_PAGINACAO ?>?<?php echo $GET_FILTER ?>pag=<?php echo ($pag - 1) ?>" class="fa fa-chevron-left" ajax></a>
         <?php } ?>
 
-        <?php for ($i = $pag - 2, $limiteDeLinks = $i + 4; $i <= $limiteDeLinks; ++$i) {
+        <?php for ($i = $pag - 1, $limiteDeLinks = $i + 2; $i <= $limiteDeLinks; ++$i) {
           if ($i < 1) {
             $i = 1;
-            $limiteDeLinks = 3;
+            $limiteDeLinks = 2;
           }
 
           if ($limiteDeLinks > $ProdutosTotal) {
             $limiteDeLinks = $ProdutosTotal;
-            $i = $limiteDeLinks - 4;
+            $i = $limiteDeLinks - 3;
           }
 
           if ($i < 1) {
