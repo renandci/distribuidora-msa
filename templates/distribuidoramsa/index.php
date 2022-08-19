@@ -102,7 +102,7 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
       </a>
     </li>
     <?php echo (($div % 4) == 0) ? '<li class="col-lg-12 col-md-12 hidden-sm hidden-xs"><hr/></li>' : '' ?>
-    <?php echo (($div % 2) == 0) ? '<li class="hidden-lg hidden-md col-sm-12 hidden-xs"><hr/></li>' : '' ?>
+    <?php echo (($div % 2) == 0) ? '<li class="hidden-lg hidden-md hidden-md col-xs-12"><hr/></li>' : '' ?>
   <?php
     ++$div;
   }

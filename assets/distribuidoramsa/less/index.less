@@ -8,12 +8,15 @@
   height: 75px;
   color: white !important;
   background-color: @cor-02;
-  font-size: 26px;
   font-weight: 800;
   border-radius: 5px;
   margin-bottom: 26px;
 
   > h1 {
     margin: 0;
+    font-size: 26px;
+    @media (max-width: 767px) {
+      font-size: 24px;
+    }
   }
 }
