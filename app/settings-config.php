@@ -4,10 +4,9 @@ use PagSeguro\Configuration\Configure;
 // pego na url do .htaccess
 $MODULO_GET = current(explode('/', filter_input(INPUT_GET, 'modulo')));
 
-$auto_connections = [
-  'production' => "mysql://root:root@192.168.57.16/edistribu?charset=utf8",
+$autoConn = [
+  'production' => "mysql://distribu:dI@1155a$!@localhost/edistribu?charset=utf8",
   'development' => 'mysql://root:root@localhost/edistribu?charset=utf8',
-  'distribuidoramsa' => 'mysql://root:root@localhost/edistribu?charset=utf8',
 ];
 
 // Modo para ativar o cliente direto como include
@@ -19,7 +18,7 @@ try {
 
   $cfg = ActiveRecord\Config::instance();
   $cfg->set_model_directory(sprintf('%sapp/models', PATH_ROOT));
-  $cfg->set_connections(['development' => (strlen(strstr(SERVER_NAME, '.test')) > 0 ? $auto_connections['distribuidoramsa'] : $auto_connections['production'])]);
+  $cfg->set_connections(['development' => (strlen(strstr(SERVER_NAME, '.test')) > 0 ? $autoConn['development'] : $autoConn['production'])]);
 
   $Lojas = Lojas::find(ASSETS);
 
