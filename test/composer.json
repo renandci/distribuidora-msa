@@ -1,0 +1,11 @@
+{
+  "config": {
+    "optimize-autoloader": true,
+    "platform": {
+      "php": "7.1"
+    }
+  },
+  "require": {
+    "phpmailer/phpmailer": "^5.2"
+  }
+}
