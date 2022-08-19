@@ -149,7 +149,8 @@ if (isset($CONFIG['atacadista']) && $CONFIG['atacadista'] > '0') {
           </div>
         </div>
       <?php } else { ?>
-        <?php // echo $STORE['personalize_class']::template_blackfriday($Produto); ?>
+        <?php // echo $STORE['personalize_class']::template_blackfriday($Produto);
+        ?>
         <div class="clearfix" id="carregar-gallery" style="position: relative">
           <?php
           // implantação de contador regressivo para promoções
@@ -169,7 +170,7 @@ if (isset($CONFIG['atacadista']) && $CONFIG['atacadista'] > '0') {
             echo $STORE['personalize_class']::template_countdown($Produto->setup_fin->format('Y-m-d H:i:s'), $Produto->setup_text, "#{$Produto->setup_color}", "#{$Produto->setup_hex}");
           }
           ?>
-          <img src="<?php echo Imgs::src($imgs['capa'], 'medium'); ?>" class="elevate_zoom img-responsive" id="elevate_zoom" data-zoom-image="<?php echo Imgs::src($imgs['capa'], 'large'); ?>" title="<?php echo $Produto->nome_produto ?>" />
+          <img src="<?php echo Imgs::src($imgs['capa'], 'large'); ?>" class="elevate_zoom img-responsive" id="elevate_zoom" data-zoom-image="<?php echo Imgs::src($imgs['capa'], 'large'); ?>" title="<?php echo $Produto->nome_produto ?>" />
         </div>
         <?php // $str['script_manual'] .= 'AviseMe.produto("'.$ID_PRODUTO_GET.'");';
         ?>
@@ -178,7 +179,7 @@ if (isset($CONFIG['atacadista']) && $CONFIG['atacadista'] > '0') {
           foreach ($imgs as $x => $img) {
             echo $img != '' ? ''
               . '<a href="' . $Produto->nome_produto . '" class="mr5 elevatezoom-gallery' . ($x == 'capa' ? ' active' : '') . '" '
-              . 'data-image="' . Imgs::src($img, 'medium') . '" '
+              . 'data-image="' . Imgs::src($img, 'large') . '" '
               . 'data-zoom-image="' . Imgs::src($img, 'large') . '">'
               . '<img src="' . Imgs::src($img, 'smalls') . '" width="75"/>'
               . '</a>' : '';
@@ -189,6 +190,9 @@ if (isset($CONFIG['atacadista']) && $CONFIG['atacadista'] > '0') {
     </div>
 
     <div class="col-lg-5 col-md-5 col-sm-6 col-xs-12">
+      <span id="cod-produto" class="cod-produto">
+        <?php echo $Produto->marca->marcas ?>
+      </span>
       <h1 data-nome-produto class="mt0 title-produto"><?php echo $Produto->nome_produto; ?></h1>
       <p class="mb25"><?php echo nl2br($Produto->subnome_produto) ?></p>
 

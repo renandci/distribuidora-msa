@@ -94,7 +94,7 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
         <div class="lista-centro-produtos black-70">
           <!-- <img data-original="<?= Imgs::src($rIndex->imagem, 'medium'); ?>" alt="<?= $rIndex->nome_produto ?>" class="lazy img-responsive" /> -->
           <img data-original="/assets/distribuidoramsa/imgs/produtos/smalls/<?= $rIndex->imagem ?>" style="width: 230px;height: 230px;" alt="<?= $rIndex->nome_produto ?>" class="lazy img-responsive text-center" />
-          <!-- <font size="1" class="black-30">CÓD: <?= CodProduto($rIndex->nome_produto, $rIndex->id, $rIndex->codigo_produto); ?></font> -->
+          <font size="1" class="black-30">CÓD: <?= CodProduto($rIndex->nome_produto, $rIndex->id, $rIndex->codigo_produto); ?></font>
           <font size="1" class="black-30"><?= $rIndex->marcas; ?></font>
           <h3 class="mt5 mb15 nome-produto"><?= $rIndex->nome_produto; ?></h3>
           <!-- <h4 class="mt5 mb15 nome-produto"><?= $rIndex->descricao; ?></h4> -->

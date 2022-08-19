@@ -372,7 +372,7 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
           <a href="/<?php echo converter_texto($rIndex->nome_produto) ?>/<?php echo $rIndex->id ?>/p" class="cx-lista-produtos" btn-hovers>
             <div class="lista-centro-produtos black-70">
               <img src="<?php echo $STORE['PRE_LOADED']; ?>" data-original="<?php echo Imgs::src($rIndex->imagem, 'smalls'); ?>" alt="<?php echo $rIndex->nome_produto ?>" class="lazy img-responsive" />
-              <!-- <font size="1" class="black-30">CÓD: <?php echo CodProduto($rIndex->nome_produto, $rIndex->id, $rIndex->codigo_produto); ?></font> -->
+              <font size="1" class="black-30">CÓD: <?php echo CodProduto($rIndex->nome_produto, $rIndex->id, $rIndex->codigo_produto); ?></font>
               <font size="1" class="black-30"><?php echo $rIndex->marcas; ?></font>
               <h3 class="mt5 mb15 nome-produto"><?php echo $rIndex->nome_produto; ?></h3>
             </div>

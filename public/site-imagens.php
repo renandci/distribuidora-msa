@@ -104,7 +104,7 @@ try {
 	// jpg|jpeg
 	// if(($w <= 240 || $w <= 480 || $w <= 960 || $w == 1600) && in_array($ex, ['jpg', 'jpeg', 'JPG', 'JEPG']) )
 	if(in_array($ex, ['jpg', 'jpeg', 'JPG', 'JPEG']) )
-		$WideImage->output($ex, 87);
+		$WideImage->output($ex, 90);
 
 	$WideImage->destroy();
 
