@@ -151,24 +151,24 @@ if (isset($CONFIG['atacadista']) && $CONFIG['atacadista'] > '0') {
       <?php } else { ?>
         <?php // echo $STORE['personalize_class']::template_blackfriday($Produto);
         ?>
-        <div class="clearfix" id="carregar-gallery" style="position: relative">
+        <div class="clearfix" id="carregar-gallery" style="position: relative; max-width: 405px;">
           <?php
           // implantação de contador regressivo para promoções
-          $setup_ini = $Produto->setup_ini;
-          $setup_ini = !empty($setup_ini) ? strtotime($setup_ini->format('Y-m-d H:i:s')) : $CONFIG['timestamp'] + 1;
-          $setup_fin = $Produto->setup_fin;
-          $setup_fin = !empty($setup_fin) ? strtotime($setup_fin->format('Y-m-d H:i:s')) : $CONFIG['timestamp'] + 1;
-          $codigo_a = $Produto->codigo_id;
-          $codigo_b = $Produto->promo_codigo_id;
-          $id = $Produto->promo_id;
+          // $setup_ini = $Produto->setup_ini;
+          // $setup_ini = !empty($setup_ini) ? strtotime($setup_ini->format('Y-m-d H:i:s')) : $CONFIG['timestamp'] + 1;
+          // $setup_fin = $Produto->setup_fin;
+          // $setup_fin = !empty($setup_fin) ? strtotime($setup_fin->format('Y-m-d H:i:s')) : $CONFIG['timestamp'] + 1;
+          // $codigo_a = $Produto->codigo_id;
+          // $codigo_b = $Produto->promo_codigo_id;
+          // $id = $Produto->promo_id;
 
-          $ini = ($setup_fin >= $timestamp);
-          $fin = ($setup_fin >= $timestamp);
-          $uni = ($codigo_a == $codigo_b && ($codigo_b > 0));
+          // $ini = ($setup_fin >= $timestamp);
+          // $fin = ($setup_fin >= $timestamp);
+          // $uni = ($codigo_a == $codigo_b && ($codigo_b > 0));
 
-          if ($id > 0 && ($ini && ($ini && $fin) && $uni)) {
-            echo $STORE['personalize_class']::template_countdown($Produto->setup_fin->format('Y-m-d H:i:s'), $Produto->setup_text, "#{$Produto->setup_color}", "#{$Produto->setup_hex}");
-          }
+          // if ($id > 0 && ($ini && ($ini && $fin) && $uni)) {
+          //   echo $STORE['personalize_class']::template_countdown($Produto->setup_fin->format('Y-m-d H:i:s'), $Produto->setup_text, "#{$Produto->setup_color}", "#{$Produto->setup_hex}");
+          // }
           ?>
           <img src="<?php echo Imgs::src($imgs['capa'], 'large'); ?>" class="elevate_zoom img-responsive" id="elevate_zoom" data-zoom-image="<?php echo Imgs::src($imgs['capa'], 'large'); ?>" title="<?php echo $Produto->nome_produto ?>" />
         </div>
