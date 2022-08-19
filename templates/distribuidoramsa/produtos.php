@@ -367,7 +367,7 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
 
       $div = 1;
       foreach ($Produtos as $rIndex) { ?>
-        <li class="<?php echo $STORE['personalize_cols_product'] ?> mb15">
+        <li class="col-lg-3 col-xs-2 mb15">
           <?php // echo $STORE['personalize_class']::template_blackfriday($rIndex); ?>
           <a href="/<?php echo converter_texto($rIndex->nome_produto) ?>/<?php echo $rIndex->id ?>/p" class="cx-lista-produtos" btn-hovers>
             <div class="lista-centro-produtos black-70">
@@ -379,8 +379,9 @@ if ($MobileDetect->isMobile() || $MobileDetect->isTablet()) {
           </a>
         </li>
 
-        <?php echo (($div % $STORE['lg_line']) == 0) ? '<li class="col-lg-12 hidden-md hidden-sm hidden-xs"><hr/></li>' : '' ?>
-        <?php echo (($div % $STORE['xs_line']) == 0) ? '<li class="hidden-lg hidden-md hidden-sm col-xs-12"><hr/></li>' : '' ?>
+        <?php echo (($div % 4) == 0) ? '<li class="col-lg-12 hidden-md hidden-sm hidden-xs"><hr/></li>' : '' ?>
+        <?php // echo (($div % $STORE['lg_line']) == 0) ? '<li class="col-lg-12 hidden-md hidden-sm hidden-xs"><hr/></li>' : '' ?>
+        <?php // echo (($div % $STORE['xs_line']) == 0) ? '<li class="hidden-lg hidden-md hidden-sm col-xs-12"><hr/></li>' : '' ?>
 
       <?php
         $div++;

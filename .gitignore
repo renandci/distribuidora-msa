@@ -11,3 +11,4 @@ bkp*
 app/vendor/
 assets/**/imgs/banners
 assets/**/imgs/produtos
+!templates/**/index.php
