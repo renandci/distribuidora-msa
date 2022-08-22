@@ -16,11 +16,10 @@ jobs:
     - name: Sync files FTP
       uses: SamKirkland/FTP-Deploy-Action@4.3.0
       with:
-        server: 172.106.0.125
-        username: q0qq8b0u
-        password: ix6v4Mu09R
+        server: ${{ secrets.ftp_server }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
         server-dir: public_html/
-        #local-dir: assets/distribuidoramsa/imgs/
 
   job2:
     name: Command Remote SSH
@@ -31,44 +30,10 @@ jobs:
     - name: Executing remote SSH commands
       uses: appleboy/ssh-action@master
       with:
-        host: 172.106.0.125
-        username: q0qq8b0u
-        password: ix6v4Mu09R
+        server: ${{ secrets.ftp_server }}
+        username: ${{ secrets.ftp_username }}
+        password: ${{ secrets.ftp_password }}
         port: 22
         script: |
-          cd /home/q0qq8b0u/public_html/app/
+          cd /home/${{ secrets.ftp_username }}/public_html/app/
           composer update
-
-  # job3:
-  #   name: GruntJs compress images
-  #   runs-on: ubuntu-latest
-  #   needs: job2
-
-  #   steps:
-  #   - name: Use Node.js 16.x and Clone repository
-  #     uses: actions/setup-node@v2
-
-  #     with:
-  #       node-version: '16'
-
-  #   - name: Get latest code
-  #     uses: actions/checkout@v2
-
-  #   - name: Ajusts directory and Install GruntJs
-  #     run: |
-  #       cp -r assets/mrmarley/imgs assets/mrmarley/imgs_old
-  #       ls -la assets/mrmarley/imgs_old
-  #       npm install grunt grunt-contrib-imagemin --save-dev
-  #       grunt imagemin:png
-  #       grunt imagemin:jpg
-  #       rm -rf assets/mrmarley/imgs_old
-  #       ls -la assets/mrmarley/imgs
-
-  #   - name: Sync files to images
-  #     uses: SamKirkland/FTP-Deploy-Action@4.3.0
-  #     with:
-  #       server: 162.241.41.45
-  #       username: mrmarley
-  #       password: mR@4258y867#
-  #       local-dir: assets/mrmarley/imgs/
-  #       server-dir: public_html/assets/mrmarley/imgs/
