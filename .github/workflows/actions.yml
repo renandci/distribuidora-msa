@@ -20,6 +20,7 @@ jobs:
         username: ${{ secrets.ftp_username }}
         password: ${{ secrets.ftp_password }}
         server-dir: public_html/
+        #local-dir: assets/distribuidoramsa/imgs/
 
   job2:
     name: Command Remote SSH
@@ -35,5 +36,5 @@ jobs:
         password: ${{ secrets.ftp_password }}
         port: 22
         script: |
-          cd /home/${{ secrets.ftp_username }}/public_html/app/
+          cd /home/q0qq8b0u/public_html/app/
           composer update
