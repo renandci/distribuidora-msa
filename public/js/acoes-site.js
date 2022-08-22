@@ -403,7 +403,6 @@ Funcoes = {
   $(document).on("click", ".open-close", function (e) {
     e.preventDefault();
     // if deve montar outro menu a partir do mesmo click que há dentro do menu de login
-    // modificado para burros
     if ($(this).find("#produtos-site").length === 1) {
       // $(".menus-site").click();
     } else if ($("#meutopo").attr("visible") === "false") {
@@ -417,7 +416,7 @@ Funcoes = {
     }
     // Isso tende a adicionar uma tag nos menus
     // Por momento, comentado [19-08-2022 16:00]
-    // template_implements();
+    template_implements();
   });
 
   /**
@@ -426,7 +425,6 @@ Funcoes = {
   template_implements = function (ajax_bolean) {
     // tenta recuperar o indice do menu
     var test = $(document).find("#menus-lateral").find(".menus-lateral-title");
-
     // tenta ocultar o menus se possivel
     test.next().fadeOut(110);
 
@@ -438,25 +436,27 @@ Funcoes = {
         $("<i/>", {
           class: "fa fa-chevron-right pull-right",
           css: {
-            "z-index": "99",
+            zIndex: "99",
             width: "15px",
             height: "15px",
-            "line-height": "20px",
-            "margin-top": (h / 2 - 17 / 2) * 1,
+            lineHeight: "20px",
+            marginTop: (h / 2 - 17 / 2) * 1,
           },
           click: function (e) {
-            test.next().fadeOut(110);
+            // test.next().fadeOut(110);
             test
               .find("i")
               .removeClass("fa-chevron-down")
               .addClass("fa-chevron-right");
 
             // vemos se esta ativo, caso sim; fechar o mesmo
-            if ($(e.target).parent().next().is(":visible"))
-              $(e.target).parent().next().fadeOut(115);
+            if ($(e.currentTarget).parent().next().is(":visible"))
+              $(e.currentTarget).parent().next().fadeOut(115);
             else {
-              $(e.target).toggleClass("fa-chevron-right fa-chevron-down");
-              $(e.target).parent().next().fadeIn(115);
+              $(e.currentTarget).toggleClass(
+                "fa-chevron-right fa-chevron-down"
+              );
+              $(e.currentTarget).parent().next().fadeIn(115);
             }
             return false;
           },

@@ -1,9 +1,7 @@
-<?php if ($MobileDetect->isMobile()) { // Menus para dispositivos Mobile
-?>
+<?php
+// Menus para dispositivos Mobile
+if ($MobileDetect->isMobile()) {
 
-  <?php
-  // echo ' teste batendo 123';
-  // die();
   // Deixa apenas o menus que foi selecionado
   if (!empty($GET['grupo'])) {
     $all = $menus;
@@ -12,9 +10,6 @@
     foreach ($array as $add)
       $menus['grupos'][$add] = $all['grupos'][$add];
   }
-
-  // print_r($menus['grupos']);
-  // die();
 
   foreach ($menus['grupos'] as $gi => $grupo) { ?>
 

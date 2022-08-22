@@ -60,6 +60,11 @@
                 <div class="menus-lateral-title">
                   <a href="/produtos">produtos </a>
                 </div>
+                <ul class="menus-lateral-sub" style="padding: 16px;">
+                  <?php
+                  include PATH_ROOT . '/templates/_all/produtos-menus-lateral.php';
+                  ?>
+                </ul>
               </li>
               <li class="produtos-menus">
                 <div class="menus-lateral-title">
@@ -76,9 +81,9 @@
                   <a href="/contato">contato </a>
                 </div>
               </li>
-              <?php // include PATH_ROOT . '/templates/_all/produtos-menus-lateral.php';
-              ?>
-              <?php // include PATH_ROOT . '/templates/_all/produtos-filtros-lateral.php';
+              <?php
+              // include PATH_ROOT . '/templates/_all/produtos-menus-lateral.php';
+              // include PATH_ROOT . '/templates/_all/produtos-filtros-lateral.php';
               ?>
             </ul>
           </form>

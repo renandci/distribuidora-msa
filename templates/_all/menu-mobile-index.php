@@ -1,6 +1,7 @@
-<?php if ($MobileDetect->isMobile()) { // Menus para dispositivos Mobile
-?>
-<h4 class="white text-center" style="padding: 7px;background-color: #002e5d!important;">Produtos</h4>
+<?php
+// Menus para dispositivos Mobile
+if ($MobileDetect->isMobile()) { ?>
+  <h4 class="white text-center" style="padding: 7px;background-color: #002e5d!important;">Produtos</h4>
   <div class="row menu-mobile-index">
     <?php
     // Deixa apenas o menus que foi selecionado
@@ -11,7 +12,6 @@
       foreach ($array as $add)
         $menus['grupos'][$add] = $all['grupos'][$add];
     }
-
 
     foreach ($menus['grupos'] as $gi => $grupo) { ?>
       <li class="col-xs-6 list-menu-index">
@@ -26,14 +26,12 @@
 <?php } ?>
 
 <style>
-
-.list-menu-index{
-  list-style: none;
-  text-align: center;
-  padding: 10px;
-  background-color: #a8b5c3;
-  color: white;
-  border: 1px solid white;
-}
-
+  .list-menu-index {
+    list-style: none;
+    text-align: center;
+    padding: 10px;
+    background-color: #a8b5c3;
+    color: white;
+    border: 1px solid white;
+  }
 </style>
