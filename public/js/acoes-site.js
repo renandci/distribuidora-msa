@@ -423,16 +423,23 @@ Funcoes = {
    * Novo menu lateral do site
    */
   template_implements = function (ajax_bolean) {
-    // tenta recuperar o indice do menu
-    var test = $(document).find("#menus-lateral").find(".menus-lateral-title");
+    // tenta recuperar o indice do menu somente dos produtos
+    let test = $(document).find("#menus-lateral").find(".menus-lateral-title");
+    let testSub = $(document)
+      .find("#menus-lateral")
+      .find(".menus-lateral-sub")
+      .find(".menus-lateral-title");
+
     // tenta ocultar o menus se possivel
     test.next().fadeOut(110);
 
     h = test.height();
 
+    console.log(test);
+
     // ver se existe esse elemento, caso cria um para cada
     if (test.find("i").length == 0) {
-      test.append([
+      $(
         $("<i/>", {
           class: "fa fa-chevron-right pull-right",
           css: {
@@ -445,6 +452,37 @@ Funcoes = {
           click: function (e) {
             // test.next().fadeOut(110);
             test
+              .find("i")
+              .removeClass("fa-chevron-down")
+              .addClass("fa-chevron-right");
+
+            // vemos se esta ativo, caso sim; fechar o mesmo
+            if ($(e.currentTarget).parent().next().is(":visible"))
+              $(e.currentTarget).parent().next().fadeOut(115);
+            else {
+              $(e.currentTarget).toggleClass(
+                "fa-chevron-right fa-chevron-down"
+              );
+              $(e.currentTarget).parent().next().fadeIn(115);
+            }
+            return false;
+          },
+        })
+      ).appendTo(test[2]);
+
+      testSub.append([
+        $("<i/>", {
+          class: "fa fa-chevron-right pull-right",
+          css: {
+            zIndex: "99",
+            width: "15px",
+            height: "15px",
+            lineHeight: "20px",
+            marginTop: (h / 2 - 17 / 2) * 1,
+          },
+          click: function (e) {
+            // test.next().fadeOut(110);
+            testSub
               .find("i")
               .removeClass("fa-chevron-down")
               .addClass("fa-chevron-right");
