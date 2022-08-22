@@ -435,8 +435,6 @@ Funcoes = {
 
     h = test.height();
 
-    console.log(test);
-
     // ver se existe esse elemento, caso cria um para cada
     if (test.find("i").length == 0) {
       $(
