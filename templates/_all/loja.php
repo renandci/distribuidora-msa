@@ -66,24 +66,41 @@ if (!empty($POST['acao']) && $POST['acao'] == 'enviar') {
     $mail->SmtpClose();
   }
 }
+?>
+<style>
+  .container-flex {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
 
-echo ''
-  . '<style>'
-  . '.form-contato label{ '
-  . 'display: block; '
-  . 'margin-bottom: 5px; '
-  . '} '
-  . '.form-contato input{ '
-  . 'display: block; '
-  . 'width: 100%; '
-  . '} '
-  . '.form-contato textarea{ '
-  . 'display: block; '
-  . 'width: 100%; '
-  . 'height: 175px; '
-  . '} '
-  . '</style>';
+  .container-flex>div {
+    padding: 16px;
+  }
 
+  @media (max-width: 767px) {
+    .container-flex {
+      flex-direction: column;
+    }
+  }
+
+  .form-contato label {
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  .form-contato input {
+    display: block;
+    width: 100%;
+  }
+
+  .form-contato textarea {
+    display: block;
+    width: 100%;
+    height: 175px;
+  }
+</style>
+<?php
 echo sprintf("%s", htmlspecialchars_decode($ConfiguracoesPaginas->descricao, HTML_SPECIALCHARS | ENT_QUOTES));
 
 
